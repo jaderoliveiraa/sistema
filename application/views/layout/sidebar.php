@@ -51,6 +51,7 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a title="Gerenciar Marcas" class="collapse-item" href="<?php echo base_url('marcas'); ?>"><i class="fab fa-codepen" style="color: GreenYellow;"></i>&nbsp;&nbsp;Marcas</a>
+                <a title="Gerenciar Produtos" class="collapse-item" href="<?php echo base_url('produtos'); ?>"><i class="fas fa-tags" style="color: Chocolate;"></i></i>&nbsp;&nbsp;Produtos</a>
                 <a title="Gerenciar Categorias" class="collapse-item" href="<?php echo base_url('categorias'); ?>"><i class="fas fa-vector-square" style="color: MediumBlue;"></i>&nbsp;&nbsp;Categorias</a>
             </div>
         </div>
