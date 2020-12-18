@@ -121,25 +121,7 @@ class Fornecedores extends CI_Controller {
             redirect('fornecedores');
         } else {
 
-            /*
-              [fornecedor_razao] => fulano de tal ME
-              [fornecedor_nome_fantasia] => bing ball
-              [fornecedor_cnpj] => 08.992.623/0001-00
-              [fornecedor_ie] =>
-              [fornecedor_telefone] => (88) 3512-2545
-              [fornecedor_celular] =>
-              [fornecedor_email] => fulano@gmail.com
-              [fornecedor_contato] =>
-              [fornecedor_cep] =>
-              [fornecedor_endereco] =>
-              [fornecedor_numero_endereco] =>
-              [fornecedor_bairro] =>
-              [fornecedor_complemento] =>
-              [fornecedor_cidade] =>
-              [fornecedor_estado] =>
-              [fornecedor_ativo] => 1
-              [fornecedor_obs] =>
-             * */
+            
 
             $this->form_validation->set_rules('fornecedor_razao', '', 'trim|required|min_length[4]|max_length[200]|callback_check_razao_social');
             $this->form_validation->set_rules('fornecedor_nome_fantasia', '', 'trim|required|min_length[4]|max_length[150]|callback_check_nome_fantasia');
@@ -158,6 +140,19 @@ class Fornecedores extends CI_Controller {
             $this->form_validation->set_rules('fornecedor_celular', '', 'trim|required|max_length[16]|callback_check_fornecedor_celular');
 
             if ($this->form_validation->run()) {
+                
+                $fornecedor_ativa = $this->input->post('fornecedor_ativo');
+                
+                if($this->db->table_exists('produtos')){
+                    
+                    if($fornecedor_ativa == 0 && $this->core_model->get_by_id('produtos', array('produto_fornecedor_id' =>$fornecedor_id, 'produto_ativo' => 1))){
+                        $this->session->set_flashdata('error', 'Este Fornecedor está em uso em PRODUTOS e não pode ser desativado!');
+                        redirect('fornecedores');
+                        
+                    }
+                    
+                }
+                
                 $data = elements(
                         array(
                             'fornecedor_razao',

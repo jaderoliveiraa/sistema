@@ -156,9 +156,9 @@
                             <label for="formGroupExampleInput">Situação</label>
                             <select class="form-control form-control-user-date h-50" name="fornecedor_ativo">
 
-                                <option class="h-50" value="0" <?php echo($fornecedor->fornecedor_ativo == 0) ? 'selected' : '' ?> >Inativo</option>
                                 <option class="h-50" value="1" <?php echo($fornecedor->fornecedor_ativo == 1) ? 'selected' : '' ?> >Ativo</option>
-
+                                <option class="h-50" value="0" <?php echo($fornecedor->fornecedor_ativo == 0) ? 'selected' : '' ?> >Inativo</option>
+                                
                             </select>
                         </div>
 

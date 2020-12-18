@@ -82,7 +82,7 @@
                                     <td class="text-center"><?php echo $marca->marca_id?></td>
                                     <td class="text-center"><?php echo $marca->marca_nome ?></td>
                                     <td class="text-center">
-                                        <?php echo ($marca->marca_ativa == 1 ? '<span class="badge badge-info btn-sm">Ativa</span>' : '<span class="badge badge-primary btn-sm">Inativa</span>'); ?></td>
+                                        <?php echo ($marca->marca_ativa == 1 ? '<span class="badge badge-success btn-sm">Ativa</span>' : '<span class="badge badge-dark btn-sm">Inativa</span>'); ?></td>
                                     <td class="text-center">
                                         <a title="Editar" href="<?php echo base_url('marcas/edit/' . $marca->marca_id); ?>" class="btn btn-sm btn-primary"><i class="fas fa-user-edit"></i></a>
                                         <a title="Excluir" href="javascript(void)" data-toggle="modal" data-target="#marca-<?php echo $marca->marca_id; ?>" class="btn btn-sm btn-danger"><i class="fas fa-user-times"></i></a>

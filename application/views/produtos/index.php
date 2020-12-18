@@ -54,6 +54,25 @@
                 </div>
 
             </div>
+         <!-- Para Info -->
+        <?php if ($message = $this->session->flashdata('info')): ?>
+
+            <div class="row">
+
+                <div class="col-md-12">
+
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <strong><i class="fas fa-exclamation-triangle"></i>&nbsp; <?php echo $message ?></strong> 
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+
+        <?php endif; ?>
 
         <?php endif; ?>
 
@@ -114,7 +133,7 @@
                                         <div class="modal-body">Selecione <strong class="text-success text-uppercase">"Sim"</strong> para Deletar ou <strong class="text-danger text-uppercase">"Não"</strong> para cancelar!</div>
                                         <div class="modal-footer">
                                             <button class="btn btn-danger" type="button" data-dismiss="modal">Não</button>
-                                            <a class="btn btn-success" href="<?php echo base_url('categorias/del/' . $produto->produto_id); ?>">Sim</a>
+                                            <a class="btn btn-success" href="<?php echo base_url('produtos/del/' . $produto->produto_id); ?>">Sim</a>
                                         </div>
                                     </div>
                                 </div>

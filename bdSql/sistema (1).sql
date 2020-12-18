@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 14-Dez-2020 às 02:08
+-- Tempo de geração: 18-Dez-2020 às 01:39
 -- Versão do servidor: 10.4.14-MariaDB
 -- versão do PHP: 7.4.11
 
@@ -41,7 +41,6 @@ CREATE TABLE `categorias` (
 INSERT INTO `categorias` (`categoria_id`, `categoria_nome`, `categoria_ativa`, `categoria_data_alteracao`) VALUES
 (1, 'Games', 1, '2020-12-13 23:33:04'),
 (2, 'Celulares', 1, '2020-12-13 15:05:18'),
-(3, 'Notebooks', 1, '2020-12-13 15:05:21'),
 (4, 'Acessórios', 1, '2020-12-13 15:05:23'),
 (5, 'Impressoras', 1, '2020-12-13 15:05:25'),
 (6, 'Tablet&#039;s', 1, '2020-12-13 23:39:23');
@@ -87,6 +86,23 @@ INSERT INTO `clientes` (`cliente_id`, `cliente_data_cadastro`, `cliente_tipo`, `
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `contas_pagar`
+--
+
+CREATE TABLE `contas_pagar` (
+  `conta_pagar_id` int(11) NOT NULL,
+  `conta_pagar_fornecedor_id` int(11) DEFAULT NULL,
+  `conta_pagar_data_vencto` date DEFAULT NULL,
+  `conta_pagar_data_pagamento` datetime DEFAULT NULL,
+  `conta_pagar_valor` varchar(15) DEFAULT NULL,
+  `conta_pagar_status` tinyint(1) DEFAULT NULL,
+  `conta_pagar_obs` tinytext DEFAULT NULL,
+  `conta_pagar_data_alteracao` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='		';
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `fornecedores`
 --
 
@@ -118,8 +134,8 @@ CREATE TABLE `fornecedores` (
 --
 
 INSERT INTO `fornecedores` (`fornecedor_id`, `fornecedor_data_cadastro`, `fornecedor_razao`, `fornecedor_nome_fantasia`, `fornecedor_cnpj`, `fornecedor_ie`, `fornecedor_telefone`, `fornecedor_celular`, `fornecedor_email`, `fornecedor_contato`, `fornecedor_cep`, `fornecedor_endereco`, `fornecedor_numero_endereco`, `fornecedor_bairro`, `fornecedor_complemento`, `fornecedor_cidade`, `fornecedor_estado`, `fornecedor_ativo`, `fornecedor_obs`, `fornecedor_data_alteracao`) VALUES
-(4001, '2020-12-10 10:12:23', 'fulano de tal ME', 'bing ball', '50.499.786/0001-01', '215487222+2', '(88) 3512-2545', '(88) 98852-6547', 'fulano@gmail.com', 'Fernando', '63.034-258', 'rua 1 de maio', '1021', 'populares', NULL, 'Juazeiro do Norte', 'CE', 1, 'Teste de observações', '2020-12-12 19:38:34'),
-(4004, '2020-12-12 19:50:36', 'fulano de tal', 'distribuidora me', '43.070.041/0001-67', '6548741-22', '(88) 3521-5484', '', 'alunaficticia@gmail.com', 'Júlia', '63.034-118', 'Rua Vereador Jose Xavier de Oliveira', '35', 'Franciscanos', 'Loja1', 'Juazeiro do Norte', 'CE', 1, 'teste de informações', '2020-12-12 19:50:36');
+(4001, '2020-12-10 10:12:23', 'fulano de tal ME', 'bing ball', '50.499.786/0001-01', '215487222+2', '(88) 3512-2545', '(88) 98852-6547', 'fulano@gmail.com', 'Fernando', '63.034-258', 'rua 1 de maio', '1021', 'populares', NULL, 'Juazeiro do Norte', 'CE', 1, 'Teste de observações', '2020-12-15 23:23:49'),
+(4004, '2020-12-12 19:50:36', 'fulano de tal', 'distribuidora me', '43.070.041/0001-67', '6548741-22', '(88) 3521-5484', '(88) 98852-6545', 'alunaficticia@gmail.com', 'Júlia', '63.034-118', 'Rua Vereador Jose Xavier de Oliveira', '35', 'Franciscanos', 'Loja1', 'Juazeiro do Norte', 'CE', 1, 'teste de informações', '2020-12-15 01:07:48');
 
 -- --------------------------------------------------------
 
@@ -172,7 +188,7 @@ CREATE TABLE `marcas` (
 --
 
 INSERT INTO `marcas` (`marca_id`, `marca_nome`, `marca_ativa`, `marca_data_alteracao`) VALUES
-(2, '2AM Gaming', 1, '2020-01-28 21:14:31'),
+(2, '2AM Gaming', 1, '2020-12-15 23:17:04'),
 (3, 'Samsung', 1, '2020-12-13 14:09:08'),
 (4, 'LG', 1, '2020-12-13 14:09:15'),
 (6, 'Motorola', 1, '0000-00-00 00:00:00'),
@@ -201,25 +217,23 @@ CREATE TABLE `produtos` (
   `produto_fornecedor_id` int(11) NOT NULL,
   `produto_descricao` varchar(145) DEFAULT NULL,
   `produto_unidade` varchar(25) DEFAULT NULL,
-  `produto_codigo_barras` varchar(45) DEFAULT NULL,
-  `produto_ncm` varchar(15) DEFAULT NULL,
   `produto_preco_custo` varchar(45) DEFAULT NULL,
   `produto_preco_venda` varchar(45) DEFAULT NULL,
   `produto_estoque_minimo` varchar(10) DEFAULT NULL,
   `produto_qtde_estoque` varchar(10) DEFAULT NULL,
   `produto_ativo` tinyint(1) DEFAULT NULL,
   `produto_obs` tinytext DEFAULT NULL,
-  `produto_data_alteracao` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE current_timestamp()
+  `produto_data_alteracao` timestamp NOT NULL DEFAULT '2020-12-01 04:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `produtos`
 --
 
-INSERT INTO `produtos` (`produto_id`, `produto_codigo`, `produto_data_cadastro`, `produto_categoria_id`, `produto_marca_id`, `produto_fornecedor_id`, `produto_descricao`, `produto_unidade`, `produto_codigo_barras`, `produto_ncm`, `produto_preco_custo`, `produto_preco_venda`, `produto_estoque_minimo`, `produto_qtde_estoque`, `produto_ativo`, `produto_obs`, `produto_data_alteracao`) VALUES
-(1, '72495380', NULL, 1, 1, 1, 'Notebook gamer', 'UN', '4545', '5656', '1.800,00', '15.031,00', '2', '3', 1, '', '2020-02-29 01:01:44'),
-(2, '50412637', NULL, 1, 1, 1, 'Fone de ouvido gamer', 'UN', '9999', '9999', '112,00', '125.844,00', '1', '46', 1, '', '2020-02-21 00:45:57'),
-(3, '41697502', NULL, 1, 1, 1, 'Mouse usb', 'UN', '9999', '5555', '9,99', '15,22', '2', '3', 1, '', '2020-02-22 00:46:57');
+INSERT INTO `produtos` (`produto_id`, `produto_codigo`, `produto_data_cadastro`, `produto_categoria_id`, `produto_marca_id`, `produto_fornecedor_id`, `produto_descricao`, `produto_unidade`, `produto_preco_custo`, `produto_preco_venda`, `produto_estoque_minimo`, `produto_qtde_estoque`, `produto_ativo`, `produto_obs`, `produto_data_alteracao`) VALUES
+(1, '72495380', NULL, 3, 7, 4001, 'Notebook gamer', 'UN', '1.800,00', '3.900,00', '2', '10', 0, 'TESTE DE INFORMAÇÕES', '2020-12-14 22:44:47'),
+(2, '50412637', NULL, 1, 3, 4001, 'Fone de ouvido gamer', 'UN', '112,00', '125,00', '1', '46', 1, '', '2020-12-14 22:25:09'),
+(7, '19564702', NULL, 4, 8, 4004, 'Teclado Usb - Multilaser', 'UN', '10,00', '12,00', '2', '5', 1, 'Teclado usb comum', '2020-12-01 04:00:00');
 
 -- --------------------------------------------------------
 
@@ -311,7 +325,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `email`, `activation_selector`, `activation_code`, `forgotten_password_selector`, `forgotten_password_code`, `forgotten_password_time`, `remember_selector`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `phone`) VALUES
-(5, '::1', 'jaderoliveiraa', '$2y$12$X6JiHW9XiXscEZj3THH1Zegiy29eHSIG6LU1jqJUyfMrnDBF7Tybm', 'jaderoliveiraa@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1607043618, 1607896409, 1, 'Carlos jader da', 'Silva oliveira', NULL, NULL);
+(5, '::1', 'jaderoliveiraa', '$2y$12$X6JiHW9XiXscEZj3THH1Zegiy29eHSIG6LU1jqJUyfMrnDBF7Tybm', 'jaderoliveiraa@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1607043618, 1608242376, 1, 'Carlos jader da', 'Silva oliveira', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -383,6 +397,13 @@ ALTER TABLE `categorias`
 --
 ALTER TABLE `clientes`
   ADD PRIMARY KEY (`cliente_id`);
+
+--
+-- Índices para tabela `contas_pagar`
+--
+ALTER TABLE `contas_pagar`
+  ADD PRIMARY KEY (`conta_pagar_id`),
+  ADD KEY `fk_conta_pagar_id_fornecedor` (`conta_pagar_fornecedor_id`);
 
 --
 -- Índices para tabela `fornecedores`
@@ -471,6 +492,12 @@ ALTER TABLE `clientes`
   MODIFY `cliente_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
 
 --
+-- AUTO_INCREMENT de tabela `contas_pagar`
+--
+ALTER TABLE `contas_pagar`
+  MODIFY `conta_pagar_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de tabela `fornecedores`
 --
 ALTER TABLE `fornecedores`
@@ -498,7 +525,7 @@ ALTER TABLE `marcas`
 -- AUTO_INCREMENT de tabela `produtos`
 --
 ALTER TABLE `produtos`
-  MODIFY `produto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `produto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de tabela `servicos`
@@ -533,6 +560,12 @@ ALTER TABLE `vendedores`
 --
 -- Restrições para despejos de tabelas
 --
+
+--
+-- Limitadores para a tabela `contas_pagar`
+--
+ALTER TABLE `contas_pagar`
+  ADD CONSTRAINT `fk_conta_pagar_id_fornecedor` FOREIGN KEY (`conta_pagar_fornecedor_id`) REFERENCES `fornecedores` (`fornecedor_id`);
 
 --
 -- Limitadores para a tabela `users_groups`

@@ -88,7 +88,7 @@
                                     <td><?php echo $fornecedor->fornecedor_telefone ?></td>
                                     <td><?php echo $fornecedor->fornecedor_email ?></td>
                                     <td class="text-center">
-                                        <?php echo ($fornecedor->fornecedor_ativo == 1 ? '<span class="badge badge-info btn-sm">Ativo</span>' : '<span class="badge badge-primary btn-sm">Inativo</span>'); ?></td>
+                                        <?php echo ($fornecedor->fornecedor_ativo == 1 ? '<span class="badge badge-success btn-sm">Ativo</span>' : '<span class="badge badge-dark btn-sm">Inativo</span>'); ?></td>
                                     <td class="text-center">
                                         <a title="Editar" href="<?php echo base_url('fornecedores/edit/' . $fornecedor->fornecedor_id); ?>" class="btn btn-sm btn-primary"><i class="fas fa-user-edit"></i></a>
                                         <a title="Excluir" href="javascript(void)" data-toggle="modal" data-target="#fornecedor-<?php echo $fornecedor->fornecedor_id; ?>" class="btn btn-sm btn-danger"><i class="fas fa-user-times"></i></a>

@@ -9,7 +9,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
         
-        <?php echo(isset($titulo)? '<title>Sistema | '.$titulo.'</title>' : '<title>Sistema</title>') ?>
+        <?php echo(isset($titulo)? '<title>SysControl | '.$titulo.'</title>' : '<title>SysControl</title>') ?>
 
         <!-- Custom fonts for this template-->
         <link href="<?php echo base_url('public/vendor/fontawesome-free/css/all.min.css'); ?>"  rel="stylesheet" type="text/css">

@@ -287,7 +287,6 @@ class Clientes extends CI_Controller {
             $this->form_validation->set_message('check_email', 'Já existe um cliente cadastrado com esse E-mail!');
             return FALSE;
         } else {
-
             return TRUE;
         }
     }
