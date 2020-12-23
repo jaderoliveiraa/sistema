@@ -173,29 +173,19 @@ class Clientes extends CI_Controller {
                 $this->form_validation->set_rules('cliente_celular', '', 'trim|max_length[16]|callback_check_celular');
             }
 
-            /*
-              [cliente_nome] => Jáder
-              [cliente_sobrenome] => Oliveira
-              [cliente_cpf] => 620.998.923-34
-              [cliente_data_nascimento] => 2020-12-23
-              [cliente_rg_ie] => 2002029276028
-              [cliente_email] => jaderoliveiraa@gmail.com
-              [cliente_telefone] => (88) 2154-8754
-              [cliente_celular] => (88) 98842-0622
-              [cliente_endereco] => rua do o
-              [cliente_numero_endereco] => 25
-              [cliente_complemento] =>
-              [cliente_bairro] => casas populares
-              [cliente_cidade] => Juazeiro do Norte
-              [cliente_estado] => CE
-              [cliente_cep] => 63.034-118
-              [active] => 1
-              [cliente_obs] =>
-              [cliente_tipo] => 1
-              [cliente_id] => 101
-             */
 
             if ($this->form_validation->run()) {
+                
+                $cliente_ativo = $this->input->post('cliente_ativo');
+                
+                if($this->db->table_exists('contas_receber')){
+                    
+                    if($cliente_ativo == 0 && $this->core_model->get_by_id('contas_receber', array('conta_receber_cliente_id' =>$cliente_id, 'conta_receber_status' => 0))){
+                        $this->session->set_flashdata('error', 'Este Cliente está em uso em CONTAS A RECEBER e não pode ser desativado!');
+                        redirect('receber');
+                        
+                    }
+                }
 
                 $data = elements(
                         array(

@@ -30,7 +30,7 @@
 
                     <!-- Dados pessoais -->
                     <fieldset class="m-2 mt-0 border pl-2 pr-2 pb-1 pt-1">
-                        <legend class="font-small"><i class="fas fa-screwdriver" style="color: orange;"></i>&nbsp;Serviço</legend>
+                        <legend class="font-small"><i class="fas fa-wrench" style="color: orange;"></i>&nbsp;Serviço</legend>
                         <div class="form-group row">
 
                             <div class="col-md-3">

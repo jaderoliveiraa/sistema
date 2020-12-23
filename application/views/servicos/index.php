@@ -62,7 +62,7 @@
             
             <div class="card-header py-3">
                 <label><h4>Serviços</h4></label>
-                <a title="Cadastrar novo Serviço" href="<?php echo base_url('servicos/add') ?>" class="btn btn-success btn-sm float-right"><i class="fas fa-screwdriver"></i>&nbsp;Novo</i></i></a>
+                <a title="Cadastrar novo Serviço" href="<?php echo base_url('servicos/add') ?>" class="btn btn-success btn-sm float-right"><i class="fas fa-wrench"></i>&nbsp;&nbsp;Novo</i></i></a>
             </div>
             <div class="card-body pt-0">
                 <div class="table-responsive">
@@ -88,8 +88,8 @@
                                     <td class="text-center">
                                         <?php echo ($servico->servico_ativo == 1 ? '<span class="badge badge-info btn-sm">Ativo</span>' : '<span class="badge badge-primary btn-sm">Inativo</span>'); ?></td>
                                     <td class="text-center">
-                                        <a title="Editar" href="<?php echo base_url('servicos/edit/' . $servico->servico_id); ?>" class="btn btn-sm btn-primary"><i class="fas fa-user-edit"></i></a>
-                                        <a title="Excluir" href="javascript(void)" data-toggle="modal" data-target="#cliente-<?php echo $servico->servico_id; ?>" class="btn btn-sm btn-danger"><i class="fas fa-user-times"></i></a>
+                                        <a title="Editar" href="<?php echo base_url('servicos/edit/' . $servico->servico_id); ?>" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></a>
+                                        <a title="Excluir" href="javascript(void)" data-toggle="modal" data-target="#cliente-<?php echo $servico->servico_id; ?>" class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></a>
                                     </td>
                                 </tr>
 

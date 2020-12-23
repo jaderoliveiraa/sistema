@@ -29,30 +29,58 @@
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-            <i class="fas fa-database"></i>
-            <span>Cadastros</span>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUm" aria-expanded="true" aria-controls="collapseOne">
+            <i class="fas fa-shopping-cart text-900"></i>
+            <span>Vendas</span>
         </a>
-        <div id="collapseOne" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div id="collapseUm" class="collapse" aria-labelledby="headingUm" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a title="Gerenciar Clientes" class="collapse-item" href="<?php echo base_url('clientes'); ?>"><i class="fas fa-user-tie text-green-900" style="color: mediumseagreen;"></i>&nbsp;&nbsp;Clientes</a>
-                <a title="Gerenciar Fornecedores" class="collapse-item" href="<?php echo base_url('fornecedores'); ?>"><i class="fas fa-user-tag text-blue-900" style="color: blue;"></i></i>&nbsp;&nbsp;Fornecedores</a>
-                <a title="Gerenciar Vendedores" class="collapse-item" href="<?php echo base_url('vendedores'); ?>"><i class="fas fa-user-secret text-900 " style="color: tomato;"></i>&nbsp;&nbsp;Vendedores</a>
-                <a title="Gerenciar Serviços" class="collapse-item" href="<?php echo base_url('servicos'); ?>"><i class="fas fa-screwdriver" style="color: orange;"></i>&nbsp;&nbsp;Serviços</a>
-                
+                <a title="Gerenciar Vendas" class="collapse-item" href="<?php echo base_url('vendas'); ?>"><i class="fas fa-shopping-cart text-900" style="color: mediumseagreen;"></i>&nbsp;&nbsp;Vendas</a>
+                <a title="Gerenciar Ordem de Serviços" class="collapse-item" href="<?php echo base_url('os'); ?>"><i class="fas fa-shopping-basket text-900" style="color: blue;"></i>&nbsp;&nbsp;Ordem de Serviços</a>
+
             </div>
         </div>
     </li>
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseDois" aria-expanded="true" aria-controls="collapseOne">
+            <i class="fas fa-database"></i>
+            <span>Cadastros</span>
+        </a>
+        <div id="collapseDois" class="collapse" aria-labelledby="headingDois" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a title="Gerenciar Clientes" class="collapse-item" href="<?php echo base_url('clientes'); ?>"><i class="fas fa-user-tie text-green-900" style="color: mediumseagreen;"></i>&nbsp;&nbsp;Clientes</a>
+                <a title="Gerenciar Fornecedores" class="collapse-item" href="<?php echo base_url('fornecedores'); ?>"><i class="fas fa-user-tag text-blue-900" style="color: blue;"></i></i>&nbsp;&nbsp;Fornecedores</a>
+                <a title="Gerenciar Vendedores" class="collapse-item" href="<?php echo base_url('vendedores'); ?>"><i class="fas fa-user-secret text-900 " style="color: tomato;"></i>&nbsp;&nbsp;Vendedores</a>
+                <a title="Gerenciar Serviços" class="collapse-item" href="<?php echo base_url('servicos'); ?>"><i class="fas fa-wrench text-900" style="color: orange;"></i>&nbsp;&nbsp;Serviços</a>
+
+            </div>
+        </div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTres" aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-box-open"></i>
             <span>Estoque</span>
         </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div id="collapseTres" class="collapse" aria-labelledby="headingTres" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a title="Gerenciar Marcas" class="collapse-item" href="<?php echo base_url('marcas'); ?>"><i class="fab fa-codepen" style="color: GreenYellow;"></i>&nbsp;&nbsp;Marcas</a>
                 <a title="Gerenciar Produtos" class="collapse-item" href="<?php echo base_url('produtos'); ?>"><i class="fas fa-tags" style="color: Chocolate;"></i></i>&nbsp;&nbsp;Produtos</a>
                 <a title="Gerenciar Categorias" class="collapse-item" href="<?php echo base_url('categorias'); ?>"><i class="fas fa-vector-square" style="color: MediumBlue;"></i>&nbsp;&nbsp;Categorias</a>
+            </div>
+        </div>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseQuatro" aria-expanded="true" aria-controls="collapseTres">
+            <i class="fas fa-donate"></i>
+            <span>Financeiro</span>
+        </a>
+        <div id="collapseQuatro" class="collapse" aria-labelledby="headingQuatro" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a title="Gerenciar Contas a Pagar" class="collapse-item" href="<?php echo base_url('pagar'); ?>"><i class="fas fa-comment-dollar" style="color: ForestGreen;"></i>&nbsp;&nbsp;Contas a Pagar</a>
+                <a title="Gerenciar Contas a Receber" class="collapse-item" href="<?php echo base_url('receber'); ?>"><i class="fas fa-hand-holding-usd" style="color: DarkRed;"></i>&nbsp;&nbsp;Contas a Receber</a>
+                <a title="Gerenciar Formas de Pagamentos" class="collapse-item" href="<?php echo base_url('pagamentos'); ?>"><i class="far fa-credit-card" style="color: #009926"></i>&nbsp;&nbsp;Formas de Pagamento</a>
+                <a title="Gerenciar Fluxo de Caixa" class="collapse-item" href="<?php echo base_url('pagamentos'); ?>"><i class="far fa-credit-card" style="color: #009926"></i>&nbsp;&nbsp;Fluxo de Caixa</a>
             </div>
         </div>
     </li>

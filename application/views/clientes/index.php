@@ -87,7 +87,8 @@
                                     <td class="text-center">
                                         <?php echo ($cliente->cliente_tipo == 1 ? 'Pessoa Fisica' : 'Pessoa Jurídica'); ?></td>
                                     <td class="text-center">
-                                        <?php echo ($cliente->cliente_ativo == 1 ? '<span class="badge badge-info btn-sm">Ativo</span>' : '<span class="badge badge-primary btn-sm">Inativo</span>'); ?></td>
+                                        <?php echo ($cliente->cliente_ativo == 1 ? '<span class="badge badge-info btn-sm">Ativo</span>' : '<span class="badge badge-primary btn-sm">Inativo</span>'); ?>
+                                    </td>
                                     <td class="text-center">
                                         <a title="Editar" href="<?php echo base_url('clientes/edit/' . $cliente->cliente_id); ?>" class="btn btn-sm btn-primary"><i class="fas fa-user-edit"></i></a>
                                         <a title="Excluir" href="javascript(void)" data-toggle="modal" data-target="#cliente-<?php echo $cliente->cliente_id; ?>" class="btn btn-sm btn-danger"><i class="fas fa-user-times"></i></a>
