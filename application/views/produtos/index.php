@@ -104,7 +104,7 @@
                         <tbody>
                             <?php foreach ($produtos as $produto): ?>
                                 <tr>
-                                    <td class="text-center"><?php echo $produto->produto_id?></td>
+                                    <td class="text-center"><?php echo $produto->produto_id ?></td>
                                     <td class="text-center"><?php echo $produto->produto_codigo ?></td>
                                     <td class="text-center"><?php echo $produto->produto_descricao ?></td>
                                     <td class="text-center money2"><?php echo $produto->produto_preco_venda ?></td>

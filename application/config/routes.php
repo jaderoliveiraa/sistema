@@ -13,7 +13,7 @@ $route['pagamentos/edit/(:num)'] = 'Formas_pagamentos/edit/$1';
 $route['pagamentos/del/(:num)'] = 'Formas_pagamentos/del/$1';
 
 //rotas de ordens de serviço
-$route['os'] = 'Ordem_servicos/index';
-$route['os/add'] = 'Ordem_servicos/add';
-$route['os/edit/(:num)'] = 'Ordem_servicos/edit/$1';
-$route['os/del/(:num)'] = 'Ordem_servicos/del/$1';
+$route['os'] = 'ordem_servicos/index';
+$route['os/add'] = 'ordem_servicos/add';
+$route['os/edit/(:num)'] = 'ordem_servicos/edit/$1';
+$route['os/del/(:num)'] = 'ordem_servicos/del/$1';

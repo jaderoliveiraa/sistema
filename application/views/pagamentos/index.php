@@ -80,7 +80,7 @@
         <div class="card shadow mb-4">
 
             <div class="card-header py-3">
-                <label><h4>Produtos</h4></label>
+                <label><h4>Formas de Pagamento</h4></label>
                 <a title="Cadastrar Formas de Pagamento" href="<?php echo base_url('pagamentos/add') ?>" class="btn btn-success btn-sm float-right"><i class="fas fa-tags"></i>&nbsp;&nbsp;Nova</i></i></a>
             </div>
             <div class="card-body pt-0">
