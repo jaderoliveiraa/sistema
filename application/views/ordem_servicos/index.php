@@ -97,6 +97,7 @@
                                     
                                     
                                     <td class="text-center">
+                                        <a title="Imprimir OS" href="<?php echo base_url('ordem_servicos/pdf/' . $os->ordem_servico_id); ?>" class="btn btn-sm btn-dark"><i class="fas fa-print"></i></a>
                                         <a title="Editar" href="<?php echo base_url('ordem_servicos/edit/' . $os->ordem_servico_id); ?>" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></a>
                                         <a title="Excluir" href="javascript(void)" data-toggle="modal" data-target="#os-<?php echo $os->ordem_servico_id; ?>" class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></a>
                                     </td>
