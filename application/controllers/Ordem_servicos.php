@@ -254,6 +254,10 @@ class Ordem_servicos extends CI_Controller {
                 
 
                 $ordem_servico = $data['ordem_servico'] = $this->ordem_servicos_model->get_by_id($ordem_servico_id);
+                
+                echo'<pre>';
+                print_r($data);
+                exit();
 
                 $this->load->view('layout/header', $data);
                 $this->load->view('ordem_servicos/edit');
