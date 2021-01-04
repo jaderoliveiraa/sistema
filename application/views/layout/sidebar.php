@@ -108,6 +108,12 @@
             <i class="fas fa-cogs"></i>
             <span>Sistema</span></a>
     </li>
+    
+    <li class="nav-item">
+        <a title="Fazer Backup do sistema" class="nav-link" href="<?php echo base_url('backup/backup_syscontrol'); ?>">
+            <i class="far fa-save"></i>
+            <span>Backup</span></a>
+    </li>
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">

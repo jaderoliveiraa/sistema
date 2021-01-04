@@ -2,28 +2,29 @@
 
 defined('BASEPATH') OR exit('Ação não permitida!');
 
-class Ordem_servicos_model extends CI_Model {
+class Vendas_model extends CI_Model {
 
     public function get_all() {
 
         $this->db->select([
-            'ordens_servicos.*',
+            'vendas.*',
             'clientes.cliente_id',
             'clientes.cliente_nome',
-            'marcas.marca_id',
-            'marcas.marca_nome as marca',
+            'clientes.cliente_sobrenome',
             'formas_pagamentos.forma_pagamento_id',
             'formas_pagamentos.forma_pagamento_nome as forma_pagamento',
+            'vendedores.vendedor_id',
+            'vendedores.vendedor_nome_completo',
         ]);
 
-        $this->db->join('clientes', 'cliente_id = ordem_servico_cliente_id', 'LEFT');
-        $this->db->join('formas_pagamentos', 'forma_pagamento_id = ordem_servico_forma_pagamento_id', 'LEFT');
-        $this->db->join('marcas', 'marca_id = ordem_servico_marca_equipamento_id', 'LEFT');
+        $this->db->join('clientes', 'cliente_id = venda_cliente_id', 'LEFT');
+        $this->db->join('vendedores', 'vendedor_id = venda_vendedor_id', 'LEFT');
+        $this->db->join('formas_pagamentos', 'forma_pagamento_id = venda_forma_pagamento_id', 'LEFT');
 
-        return $this->db->get('ordens_servicos')->result();
+        return $this->db->get('vendas')->result();
     }
 
-    public function get_all_servicos_by_ordem($ordem_servico_id = NULL) {
+    public function get_all_servicos_by_ordem($venda_id = NULL) {
 
         if ($ordem_servico_id) {
 
@@ -53,8 +54,6 @@ class Ordem_servicos_model extends CI_Model {
             'clientes.cliente_id',
             'clientes.cliente_cpf_cnpj',
             'clientes.cliente_celular',
-            'marcas.marca_id',
-            'marcas.marca_nome',
             'CONCAT(clientes.cliente_nome, " ", clientes.cliente_sobrenome) as cliente_nome_completo',
             'formas_pagamentos.forma_pagamento_id',
             'formas_pagamentos.forma_pagamento_nome as forma_pagamento',
@@ -65,7 +64,6 @@ class Ordem_servicos_model extends CI_Model {
 
         $this->db->join('clientes', 'cliente_id = ordem_servico_cliente_id', 'LEFT');
         $this->db->join('formas_pagamentos', 'forma_pagamento_id = ordem_servico_forma_pagamento_id', 'LEFT');
-        $this->db->join('marcas', 'marca_id = ordem_servico_marca_equipamento_id', 'LEFT');
 
         return $this->db->get('ordens_servicos')->row();
     }

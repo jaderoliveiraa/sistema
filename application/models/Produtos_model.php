@@ -17,7 +17,7 @@ class Produtos_model extends CI_Model {
             'fornecedores.fornecedor_nome_fantasia as fornecedor',
             ]);
             
-            //join para unificar oe dados em uma unica tabela
+            //join para unificar os dados em uma unica tabela
             $this->db->join('categorias', 'categoria_id = produto_categoria_id', 'LEFT');
             $this->db->join('marcas', 'marca_id = produto_marca_id', 'LEFT');
             $this->db->join('fornecedores', 'fornecedor_id = produto_fornecedor_id', 'LEFT');
