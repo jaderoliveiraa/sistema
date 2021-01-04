@@ -52,6 +52,7 @@ class Ordem_servicos extends CI_Controller {
         $this->form_validation->set_rules('ordem_servico_obs', 'Observações', 'trim|min_length[5]|max_length[500]');
 
         if ($this->form_validation->run()) {
+            
 
             $ordem_servico_valor_total = str_replace('R$', "", trim($this->input->post('ordem_servico_valor_total')));
 
@@ -132,6 +133,7 @@ class Ordem_servicos extends CI_Controller {
                     'vendor/autocomplete/jquery-ui.js',
                 ),
                 'clientes' => $this->core_model->get_all('clientes', array('cliente_ativo' => 1)),
+                'marcas' => $this->core_model->get_all('marcas', array('marca_ativa' => 1)),
             );
 
             $this->load->view('layout/header', $data);
@@ -166,6 +168,9 @@ class Ordem_servicos extends CI_Controller {
             $this->form_validation->set_rules('ordem_servico_obs', 'Observações', 'trim|min_length[5]|max_length[500]');
 
             if ($this->form_validation->run()) {
+                //echo '<pre>';
+                //print_r($this->input->post());
+                //exit();
 
                 $ordem_servico_valor_total = str_replace('R$', "", trim($this->input->post('ordem_servico_valor_total')));
 
@@ -228,6 +233,9 @@ class Ordem_servicos extends CI_Controller {
                 redirect('ordem_servicos/imprimir/' . $ordem_servico_id);
             } else {
 
+                //echo '<pre>';
+                //print_r($this->input->post());
+                //exit();
                 //erro de validação
                 $data = array(
                     'titulo' => 'Atualizar Ordem de Serviço',
@@ -248,16 +256,12 @@ class Ordem_servicos extends CI_Controller {
                     'clientes' => $this->core_model->get_all('clientes', array('cliente_ativo' => 1)),
                     'formas_pagamentos' => $this->core_model->get_all('formas_pagamentos', array('forma_pagamento_ativa' => 1)),
                     'ordem_tem_servicos' => $this->ordem_servicos_model->get_all_servicos_by_ordem($ordem_servico_id),
-                    'marcas' => $this->core_model->get_all('marcas', array('marca_ativa' =>1)),
+                    'marcas' => $this->core_model->get_all('marcas', array('marca_ativa' => 1)),
                 );
-                
-                
+
+
 
                 $ordem_servico = $data['ordem_servico'] = $this->ordem_servicos_model->get_by_id($ordem_servico_id);
-                
-                echo'<pre>';
-                print_r($data);
-                exit();
 
                 $this->load->view('layout/header', $data);
                 $this->load->view('ordem_servicos/edit');
