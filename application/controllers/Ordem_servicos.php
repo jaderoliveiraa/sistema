@@ -52,7 +52,9 @@ class Ordem_servicos extends CI_Controller {
         $this->form_validation->set_rules('ordem_servico_obs', 'Observações', 'trim|min_length[5]|max_length[500]');
 
         if ($this->form_validation->run()) {
-            
+
+
+
 
             $ordem_servico_valor_total = str_replace('R$', "", trim($this->input->post('ordem_servico_valor_total')));
 
@@ -70,6 +72,10 @@ class Ordem_servicos extends CI_Controller {
                         'ordem_servico_valor_total',
                     ), $this->input->post()
             );
+
+//            echo'<pre>';
+//            print_r($data);
+//            exit();
 
             $data['ordem_servico_valor_total'] = trim(preg_replace('/\$/', '', $ordem_servico_valor_total));
 
@@ -257,6 +263,7 @@ class Ordem_servicos extends CI_Controller {
                     'formas_pagamentos' => $this->core_model->get_all('formas_pagamentos', array('forma_pagamento_ativa' => 1)),
                     'ordem_tem_servicos' => $this->ordem_servicos_model->get_all_servicos_by_ordem($ordem_servico_id),
                     'marcas' => $this->core_model->get_all('marcas', array('marca_ativa' => 1)),
+                    'situacoes' => $this->core_model->get_all('situacoes', array('situacao_ativa' => 1)),
                 );
 
 
@@ -315,6 +322,9 @@ class Ordem_servicos extends CI_Controller {
         } else {
 
             $empresa = $this->core_model->get_by_id('sistema', array('sistema_id' => 1));
+            
+//            $situacao = $this->core_model->get_by_id($situacao_id);
+            
             $ordem_servico = $this->ordem_servicos_model->get_by_id($ordem_servico_id);
 
 
@@ -345,7 +355,7 @@ class Ordem_servicos extends CI_Controller {
             $html .= '<p>'
                     . '<strong>Cliente: </strong>' . $ordem_servico->cliente_nome_completo . '<>'
                     . '<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CPF: </strong>' . $ordem_servico->cliente_cpf_cnpj . '<>'
-                    . '<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Celular: </strong>' . $ordem_servico->cliente_celular . '<>' . '<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Situação: </strong>' . $ordem_servico->ordem_servico_situacao . '<br>'
+                    . '<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Celular: </strong>' . $ordem_servico->cliente_celular . '<>' . '<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Situação: </strong>' . $ordem_servico->ordem_servico_status . '<br>'
                     . '<strong>Forma de Pagamento: </strong>' . ($ordem_servico->ordem_servico_status == 1 ? $ordem_servico->forma_pagamento : 'Em aberto') . '<>'
                     . '<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Equipamento </strong>' . $ordem_servico->ordem_servico_equipamento . '<>' . '<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Acessórios: </strong>' . $ordem_servico->ordem_servico_acessorios . '<br>'
                     . '<strong>Obs. da O.S: </strong>' . $ordem_servico->ordem_servico_obs . '<>'
@@ -360,7 +370,6 @@ class Ordem_servicos extends CI_Controller {
 
             $html .= '<tr>';
             $html .= '<th>Serviço</th>';
-            $html .= '<th>Acessórios</th>';
             $html .= '<th>Qtde</th>';
             $html .= '<th>Valor</th>';
             $html .= '<th>Desc.</th>';
@@ -373,12 +382,14 @@ class Ordem_servicos extends CI_Controller {
             ;
 
             $valor_final_os = $this->ordem_servicos_model->get_valor_final_os($ordem_servico_id);
+            
+            
+            
 
             foreach ($servicos_ordem as $servico):
 
                 $html .= '<tr>';
                 $html .= '<td>' . $servico->servico_nome . '</td>';
-                $html .= '<td>' . $ordem_servico->ordem_servico_acessorios . '</td>';
                 $html .= '<td align="center">' . $servico->ordem_ts_quantidade . '</td>';
                 $html .= '<td style="font-size: 12px">' . 'R$ ' . $servico->ordem_ts_valor_unitario . '</td>';
                 $html .= '<td style="font-size: 12px">' . $servico->ordem_ts_valor_desconto . '%' . '</td>';
@@ -387,7 +398,7 @@ class Ordem_servicos extends CI_Controller {
 
             endforeach;
 
-            $html .= '<th colspan="4">';
+            $html .= '<th colspan="3">';
 
             $html .= '<td style="border-top: solid #ddd 2px"><stron>Valor Final</strong></td>';
             $html .= '<td style="border-top: solid #ddd 2px">' . 'R$ ' . $valor_final_os->os_valor_total . '</td>';
@@ -399,7 +410,7 @@ class Ordem_servicos extends CI_Controller {
             $html .= '<hr>';
 
 
-            $html .= '<p align="center" style="font-size: 10px">Eu,' . $ordem_servico->cliente_nome_completo . ', concordo que, caso eu não retire meu equipamento em até 90 dias a contar da data de emissão dessa ordem de serviço, o mesmo poderá ser sucateado ou vendido sem nenhuma responsabilidade ou punição para ambas as partes.</p><br>';
+            $html .= '<p align="center" style="font-size: 10px"> Caso o equipamento não seja retirado em até 90 Dias a contar da data de emissão desta ordem de serviços, Eu,' . $ordem_servico->cliente_nome_completo . ', autorizo a empresa ' . $empresa->sistema_razao_social .', a sucatear, vender ou desfazer quaisquer serviços que tenham sido feitos no equipamento sem quaisquer prejuízo para a empresa '  . $empresa->sistema_razao_social . ' e declaro o abandono do equipamento como sendo verdadeiro.</p><br>';
             $html .= '<p align="center" style="font-size: 10px">______________________________________________</p>';
             $html .= '<p align="center" style="font-size: 10px">' . $ordem_servico->cliente_nome_completo . '</p><br><br><br>';
 
@@ -418,7 +429,7 @@ class Ordem_servicos extends CI_Controller {
             $html .= '<p>'
                     . '<strong>Cliente: </strong>' . $ordem_servico->cliente_nome_completo . '<>'
                     . '<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CPF: </strong>' . $ordem_servico->cliente_cpf_cnpj . '<>'
-                    . '<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Celular: </strong>' . $ordem_servico->cliente_celular . '<>' . '<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Situação: </strong>' . $ordem_servico->ordem_servico_situacao . '<br>'
+                    . '<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Celular: </strong>' . $ordem_servico->cliente_celular . '<>' . '<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Situação: </strong>' . $ordem_servico->ordem_servico_status . '<br>'
                     . '<strong>Forma de Pagamento: </strong>' . ($ordem_servico->ordem_servico_status == 1 ? $ordem_servico->forma_pagamento : 'Em aberto') . '<>'
                     . '<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Equipamento </strong>' . $ordem_servico->ordem_servico_equipamento . '<>' . '<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Acessórios: </strong>' . $ordem_servico->ordem_servico_acessorios . '<br>'
                     . '<strong>Obs. da O.S: </strong>' . $ordem_servico->ordem_servico_obs . '<>'
@@ -433,7 +444,6 @@ class Ordem_servicos extends CI_Controller {
 
             $html .= '<tr>';
             $html .= '<th>Serviço</th>';
-            $html .= '<th>Acessórios</th>';
             $html .= '<th>Qtde</th>';
             $html .= '<th>Valor</th>';
             $html .= '<th>Desc.</th>';
@@ -451,7 +461,6 @@ class Ordem_servicos extends CI_Controller {
 
                 $html .= '<tr>';
                 $html .= '<td>' . $servico->servico_nome . '</td>';
-                $html .= '<td>' . $ordem_servico->ordem_servico_acessorios . '</td>';
                 $html .= '<td align="center">' . $servico->ordem_ts_quantidade . '</td>';
                 $html .= '<td style="font-size: 12px">' . 'R$ ' . $servico->ordem_ts_valor_unitario . '</td>';
                 $html .= '<td style="font-size: 12px">' . $servico->ordem_ts_valor_desconto . '%' . '</td>';
@@ -460,7 +469,7 @@ class Ordem_servicos extends CI_Controller {
 
             endforeach;
 
-            $html .= '<th colspan="4">';
+            $html .= '<th colspan="3">';
 
             $html .= '<td style="border-top: solid #ddd 2px"><stron>Valor Final</strong></td>';
             $html .= '<td style="border-top: solid #ddd 2px">' . 'R$ ' . $valor_final_os->os_valor_total . '</td>';
@@ -471,7 +480,7 @@ class Ordem_servicos extends CI_Controller {
 
             $html .= '<hr>';
 
-            $html .= '<p align="center" style="font-size: 10px">Eu,' . $ordem_servico->cliente_nome_completo . ', concordo que, caso eu não retire meu equipamento em até 90 dias a contar da data de emissão dessa ordem de serviço, o mesmo poderá ser sucateado ou vendido sem nenhuma responsabilidade ou punição para ambas as partes.</p><br>';
+            $html .= '<p align="center" style="font-size: 10px"> Caso o equipamento não seja retirado em até 90 Dias a contar da data de emissão desta ordem de serviços, Eu,' . $ordem_servico->cliente_nome_completo . ', autorizo a empresa ' . $empresa->sistema_razao_social .', a sucatear, vender ou desfazer quaisquer serviços que tenham sido feitos no equipamento sem quaisquer prejuízo para a empresa '  . $empresa->sistema_razao_social . ' e declaro o abandono do equipamento como sendo verdadeiro.</p><br>';
             $html .= '<p align="center" style="font-size: 10px">______________________________________________</p>';
             $html .= '<p align="center" style="font-size: 10px">' . $ordem_servico->cliente_nome_completo . '</p><br>';
 

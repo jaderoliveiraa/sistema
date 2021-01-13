@@ -119,13 +119,13 @@ $(document).ready(function () {
                 /*Início bloco que verifica se a quantidade inputada é maior que a disponibilidade em estoque*/
                 $("input.qty").keyup(function () {
 
-                    if ($(this).val() > produto_qtde_estoque) {
+                    if (parseInt($(this).val()) > parseInt(produto_qtde_estoque)) {
 
                         Swal.fire({
                             icon: 'warning',
                             width: 300,
-                            title: 'Desculpe!',
-                            html: 'Só temos <strong><u>' + produto_qtde_estoque + '</u></strong> unidades em estoque',
+                            title: 'Puxa!',
+                            html: 'Temos apenas <strong><u>' + produto_qtde_estoque + '</u></strong> unidades em estoque',
                         })
 
                         $(this).val("");

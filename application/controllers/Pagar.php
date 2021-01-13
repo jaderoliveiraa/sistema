@@ -53,7 +53,7 @@ class Pagar extends CI_Controller {
                         'conta_pagar_valor',
                         'conta_pagar_status',
                         'conta_pagar_obs',
-                    ), $this->input->post(),
+                     ), $this->input->post()
             );
 
             $conta_pagar_status = $this->input->post('conta_pagar_status');
@@ -109,8 +109,8 @@ class Pagar extends CI_Controller {
                             'conta_pagar_valor',
                             'conta_pagar_status',
                             'conta_pagar_obs',
-                        ), $this->input->post(),
-                );
+                         ), $this->input->post()
+            );
 
                 $conta_pagar_status = $this->input->post('conta_pagar_status');
 

@@ -101,7 +101,10 @@
                                 <div class="col-md-6">
                                     <label class="small my-0">Status da ordem <span class="text-danger">*</span></label>
                                     <select class="custom-select" name="ordem_servico_status">
-                                        <option value="0" selected="">Aberta</option>
+                                        <option value="0">Orçamento</option>
+                                        <option value="3">Orçamento Autorizado</option>
+                                        <option value="4">Aguardando Peças</option>
+                                        <option value="1" >Finalizada e Entregue</option>
                                     </select>
                                 </div>
 
@@ -128,7 +131,7 @@
                                         <option value="<?php echo $marca->marca_id; ?>"><?php echo $marca->marca_nome; ?></option>
                                         <?php endforeach; ?>
                                     </select>
-                                    <?php echo form_error('ordem_servico_cliente_id', '<div class="text-danger small">', '</div>');?>
+                                    <?php echo form_error('ordem_servico_marca_equipamento_id', '<div class="text-danger small">', '</div>');?>
                                 </div>
 
                             </div>

@@ -46,7 +46,7 @@
                 <div class="row">
 
                     <div class="col">
-                        <a href="<?php echo base_url('ordem_servicos/pdf/'. $ordem_servico->ordem_servico_id) ?>" class="btn btn-dark btn-icon-split btn-lg">
+                        <a href="<?php echo base_url('vendas/pdf/'. $venda->id_venda) ?>" class="btn btn-dark btn-icon-split btn-lg">
                             <span class="icon text-white-50">
                                 <i class="fas fa-print"></i>
                             </span>

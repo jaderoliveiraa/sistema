@@ -61,8 +61,8 @@
         <div class="card shadow mb-4">
             
             <div class="card-header py-3">
-                <label><h4>Vendas</h4></label>
-                <a title="Cadastrar Nova Venda" href="<?php echo base_url('vendas/add') ?>" class="btn btn-success btn-sm float-right"><i class="fas fa-cart-plus"></i>&nbsp;&nbsp;Nova</i></i></a>
+                <label><h4>Situações</h4></label>
+                <a title="Cadastrar nova Situação" href="<?php echo base_url('situacoes/add') ?>" class="btn btn-success btn-sm float-right"><i class="fab fa-codepen"></i>&nbsp;Novo</i></i></a>
             </div>
             <div class="card-body pt-0">
                 <div class="table-responsive">
@@ -70,34 +70,27 @@
                         <thead>
                             <tr>
                                 <th class="text-center no-sort">ID</th>
-                                <th class="text-center">Data de Emissão</th>
-                                <th class="text-center">Cliente</th>
-                                <th class="text-center">Vendedor</th>
-                                <th class="text-center">Valor Total</th>
-                                <th class="text-center">Forma de pagamento</th>
+                                <th class="text-center">Situação</th>
+                                <th class="text-center pr-2">Status</th>
                                 <th class="text-center no-sort">ações</th>
                             </tr>
                         </thead>
 
                         <tbody>
-                            <?php foreach ($vendas as $vendas): ?>
+                            <?php foreach ($situacoes as $situacao): ?>
                                 <tr>
-                                    <td class="text-center"><?php echo $vendas->venda_id?></td>
-                                    <td class="text-center"><?php echo formata_data_banco_com_hora($vendas->venda_data_emissao) ?></td>
-                                    <td class="text-center"><?php echo $vendas->cliente_nome_completo?></td>
-                                    <td class="text-center"><?php echo $vendas->vendedor_nome_completo?></td>
-                                    <td class="text-right"><?php echo 'R$&nbsp;' . $vendas->venda_valor_total ?></td>
-                                    <td class="text-center"><?php echo $vendas->forma_pagamento; ?></td>                                    
-                                    
+                                    <td class="text-center"><?php echo $situacao->situacao_id?></td>
+                                    <td class="text-center"><?php echo $situacao->situacao_nome ?></td>
                                     <td class="text-center">
-                                        <a title="Imprimir OS" href="<?php echo base_url('vendas/pdf/' . $vendas->venda_id); ?>" class="btn btn-sm btn-dark"><i class="fas fa-print"></i></a>
-                                        <a title="Editar" href="<?php echo base_url('vendas/edit/' . $vendas->venda_id); ?>" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></a>
-                                        <a title="Excluir" href="javascript(void)" data-toggle="modal" data-target="#venda-<?php echo $vendas->venda_id; ?>" class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></a>
+                                        <?php echo ($situacao->situacao_ativa == 1 ? '<span class="badge badge-success btn-sm">Ativa</span>' : '<span class="badge badge-dark btn-sm">Inativa</span>'); ?></td>
+                                    <td class="text-center">
+                                        <a title="Editar" href="<?php echo base_url('situacoes/edit/' . $situacao->situacao_id); ?>" class="btn btn-sm btn-primary"><i class="fas fa-user-edit"></i></a>
+                                        <a title="Excluir" href="javascript(void)" data-toggle="modal" data-target="#situacao-<?php echo $situacao->situacao_id; ?>" class="btn btn-sm btn-danger"><i class="fas fa-user-times"></i></a>
                                     </td>
                                 </tr>
 
                                  <!-- Delete Modal-->
-                            <div class="modal fade" id="venda-<?php echo $vendas->venda_id; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="cliente-<?php echo $situacao->situacao_id; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -106,10 +99,10 @@
                                                 <span aria-hidden="true">×</span>
                                             </button>
                                         </div>
-                                        <div class="modal-body">Selecione <strong class="text-success text-uppercase">"Sim"</strong> para Deletar a Venda ou <strong class="text-danger text-uppercase">"Não"</strong> para cancelar!</div>
+                                        <div class="modal-body">Selecione <strong class="text-success text-uppercase">"Sim"</strong> para Deletar ou <strong class="text-danger text-uppercase">"Não"</strong> para cancelar!</div>
                                         <div class="modal-footer">
                                             <button class="btn btn-danger" type="button" data-dismiss="modal">Não</button>
-                                            <a class="btn btn-success" href="<?php echo base_url('vendas/del/' . $vendas->venda_id); ?>">Sim</a>
+                                            <a class="btn btn-success" href="<?php echo base_url('situacoes/del/' . $situacao->situacao_id); ?>">Sim</a>
                                         </div>
                                     </div>
                                 </div>

@@ -138,7 +138,7 @@
                                     <label class="small my-0">Status da ordem <span class="text-danger">*</span></label>
                                     <select class="custom-select" name="ordem_servico_status">
                                         <option value="0" <?php echo $ordem_servico->ordem_servico_status == 0 ? 'selected' : '' ?>>Aberta</option>
-                                        <option value="1" <?php echo $ordem_servico->ordem_servico_status == 1 ? 'selected' : '' ?>>Fechada</option>
+                                        <option value="2" <?php echo $ordem_servico->ordem_servico_status == 1 ? 'selected' : '' ?>>Fechada</option>
                                     </select>
                                 </div>
 
@@ -152,13 +152,13 @@
                                     <?php echo form_error('ordem_servico_equipamento', '<div class="text-danger small">', '</div>') ?>
                                 </div>
                                 
-                                <div class="col-sm-4 mb-1 mb-sm-0">
+                                <div class="col-sm-2 mb-1 mb-sm-0">
                                     <label class="small my-0">Modelo <span class="text-danger">*</span></label>
                                     <input type="text" class="form-control form-control-user" value="<?php echo set_value('ordem_servico_modelo_equipamento', $ordem_servico->ordem_servico_modelo_equipamento); ?>" name="ordem_servico_modelo_equipamento" required="">
                                     <?php echo form_error('ordem_servico_modelo_equipamento', '<div class="text-danger small">', '</div>') ?>
                                 </div>
                                 
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <label class="small my-0">Marca <span class="text-danger">*</span></label>
                                     <select class="custom-select" name="ordem_servico_marca_equipamento_id" >
                                         <option value="">Escolha a marca</option>
@@ -167,7 +167,17 @@
                                         <?php endforeach; ?>
                                     </select>
                                     <?php echo form_error('ordem_servico_marca_equipamento_id', '<div class="text-danger small">', '</div>') ?>
-                                </div>                                
+                                </div>
+                                
+                                <div class="col-md-3">
+                                    <label class="small my-0">Situação <span class="text-danger">*</span></label>
+                                    <select class="custom-select" name="ordem_servico_situacao_id" >
+                                        <?php foreach ($situacoes as $situacao): ?>
+                                            <option value="<?php echo $situacao->situacao_id; ?>" <?php echo ($situacao->situacao_id == $ordem_servico->ordem_servico_situacao_id ? 'selected' : '') ?> ><?php echo $situacao->situacao_nome; ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                    <?php echo form_error('ordem_servico_situacao_id', '<div class="text-danger small">', '</div>') ?>
+                                </div> 
 
                             </div>
 

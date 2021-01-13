@@ -39,7 +39,8 @@ class Produtos extends CI_Controller {
         $this->load->view('layout/footer');
     }
 
-    public function add($produto_id = NULL) {
+    //public function add($produto_id = NULL)
+    public function add() {
         $this->form_validation->set_rules('produto_descricao', '', 'trim|required|min_length[4]|max_length[145]|is_unique[produtos.produto_descricao]');
         $this->form_validation->set_rules('produto_unidade', '', 'trim|required|min_length[2]|max_length[5]');
         $this->form_validation->set_rules('produto_preco_custo', 'Preço de Custo', 'trim|required|max_length[45]');

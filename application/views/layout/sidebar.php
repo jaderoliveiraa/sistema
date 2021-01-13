@@ -9,8 +9,6 @@
         <div class="sidebar-brand-text mx-3">SysControl</div>
     </a>
 
-    <!-- Divider -->
-    <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Home -->
     <li class="nav-item">
@@ -31,7 +29,7 @@
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUm" aria-expanded="true" aria-controls="collapseOne">
             <i class="fas fa-shopping-cart text-900"></i>
-            <span>Vendas</span>
+            <span>PDV</span>
         </a>
         <div id="collapseUm" class="collapse" aria-labelledby="headingUm" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
@@ -52,6 +50,7 @@
                 <a title="Gerenciar Fornecedores" class="collapse-item" href="<?php echo base_url('fornecedores'); ?>"><i class="fas fa-user-tag text-blue-900" style="color: blue;"></i></i>&nbsp;&nbsp;Fornecedores</a>
                 <a title="Gerenciar Vendedores" class="collapse-item" href="<?php echo base_url('vendedores'); ?>"><i class="fas fa-user-secret text-900 " style="color: tomato;"></i>&nbsp;&nbsp;Vendedores</a>
                 <a title="Gerenciar Serviços" class="collapse-item" href="<?php echo base_url('servicos'); ?>"><i class="fas fa-wrench text-900" style="color: orange;"></i>&nbsp;&nbsp;Serviços</a>
+                <a title="Gerenciar Situações" class="collapse-item" href="<?php echo base_url('situacoes'); ?>"><i class="fas fa-exclamation text-900" style="color: blueviolet;"></i>&nbsp;&nbsp;Situações</a>
 
             </div>
         </div>
