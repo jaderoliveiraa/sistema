@@ -322,6 +322,7 @@ class Ordem_servicos extends CI_Controller {
         } else {
 
             $empresa = $this->core_model->get_by_id('sistema', array('sistema_id' => 1));
+//            $situacao_os = $this->core_model->get_by_id('situacoes', array('situacao_id' => $ordem_servico->ordem_servico_situacao_id));
             
 //            $situacao = $this->core_model->get_by_id($situacao_id);
             
@@ -355,7 +356,7 @@ class Ordem_servicos extends CI_Controller {
             $html .= '<p>'
                     . '<strong>Cliente: </strong>' . $ordem_servico->cliente_nome_completo . '<>'
                     . '<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CPF: </strong>' . $ordem_servico->cliente_cpf_cnpj . '<>'
-                    . '<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Celular: </strong>' . $ordem_servico->cliente_celular . '<>' . '<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Situação: </strong>' . $ordem_servico->ordem_servico_status . '<br>'
+                    . '<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Celular: </strong>' . $ordem_servico->cliente_celular . '<>' . '<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Situação: </strong>' . $ordem_servico->ordem_servico_situacao_id . '<br>'
                     . '<strong>Forma de Pagamento: </strong>' . ($ordem_servico->ordem_servico_status == 1 ? $ordem_servico->forma_pagamento : 'Em aberto') . '<>'
                     . '<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Equipamento </strong>' . $ordem_servico->ordem_servico_equipamento . '<>' . '<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Acessórios: </strong>' . $ordem_servico->ordem_servico_acessorios . '<br>'
                     . '<strong>Obs. da O.S: </strong>' . $ordem_servico->ordem_servico_obs . '<>'

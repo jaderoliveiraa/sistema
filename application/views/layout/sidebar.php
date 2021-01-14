@@ -83,6 +83,18 @@
             </div>
         </div>
     </li>
+    
+     <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCinco" aria-expanded="true" aria-controls="collapseTres">
+            <i class="fas fa-search-dollar"></i>
+            <span>Relatórios</span>
+        </a>
+        <div id="collapseCinco" class="collapse" aria-labelledby="headingCinco" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a title="Gerar Relatório de Vendas" class="collapse-item" href="<?php echo base_url('relatorios/vendas'); ?>"><i class="fas fa-shopping-cart text-900" style="color: mediumseagreen;"></i>&nbsp;&nbsp;Vendas</a>
+            </div>
+        </div>
+    </li>
 
 
     <!-- Divider -->

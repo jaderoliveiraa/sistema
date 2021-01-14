@@ -53,6 +53,8 @@ class Ordem_servicos_model extends CI_Model {
             'clientes.cliente_id',
             'clientes.cliente_cpf_cnpj',
             'clientes.cliente_celular',
+            'situacoes.situacao_id',
+            'situacoes.situacao_nome',
             'marcas.marca_id',
             'marcas.marca_nome',
             'CONCAT(clientes.cliente_nome, " ", clientes.cliente_sobrenome) as cliente_nome_completo',
@@ -64,6 +66,7 @@ class Ordem_servicos_model extends CI_Model {
         $this->db->where('ordem_servico_id', $ordem_servico_id);
 
         $this->db->join('clientes', 'cliente_id = ordem_servico_cliente_id', 'LEFT');
+        $this->db->join('situacoes', 'situacao_id = ordem_servico_situacao_id', 'LEFT');
         $this->db->join('formas_pagamentos', 'forma_pagamento_id = ordem_servico_forma_pagamento_id', 'LEFT');
         $this->db->join('marcas', 'marca_id = ordem_servico_marca_equipamento_id', 'LEFT');
 
