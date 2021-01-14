@@ -29,6 +29,8 @@ class Vendas_model extends CI_Model {
             'vendas.*',
             'clientes.cliente_id',
             'CONCAT(clientes.cliente_nome, " ", clientes.cliente_sobrenome) as cliente_nome_completo',
+            'clientes.cliente_cpf_cnpj',
+            'clientes.cliente_celular',
             'formas_pagamentos.forma_pagamento_id',
             'formas_pagamentos.forma_pagamento_nome as forma_pagamento',
             'vendedores.vendedor_id',
@@ -95,7 +97,7 @@ class Vendas_model extends CI_Model {
                 'FORMAT(SUM(REPLACE(venda_produto_valor_total,",", "")), 2) as venda_valor_total',
             ]);
 
-            $this->db->join('produtos', 'venda_id = venda_produto_id_produto', 'LEFT');
+            $this->db->join('produtos', 'produto_id = venda_produto_id_produto', 'LEFT');
             $this->db->where('venda_produto_id_venda', $venda_id);
 
             return $this->db->get('venda_produtos')->row();
