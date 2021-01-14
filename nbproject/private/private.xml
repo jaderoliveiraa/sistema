@@ -5,6 +5,7 @@
         <group>
             <file>file:/C:/xampp/htdocs/sistema/application/models/Vendas_model.php</file>
             <file>file:/C:/xampp/htdocs/sistema/application/controllers/Vendas.php</file>
+            <file>file:/C:/xampp/htdocs/sistema/application/views/vendas/index.php</file>
         </group>
     </open-files>
 </project-private>
