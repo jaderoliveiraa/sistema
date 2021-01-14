@@ -90,8 +90,8 @@
                                     <td class="text-center"><?php echo $vendas->forma_pagamento; ?></td>                                    
                                     
                                     <td class="text-center">
-                                        <a title="Imprimir OS" href="<?php echo base_url('vendas/pdf/' . $vendas->venda_id); ?>" class="btn btn-sm btn-dark"><i class="fas fa-print"></i></a>
-                                        <a title="Editar" href="<?php echo base_url('vendas/edit/' . $vendas->venda_id); ?>" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></a>
+                                        <a title="Imprimir Venda" href="<?php echo base_url('vendas/pdf/' . $vendas->venda_id); ?>" class="btn btn-sm btn-dark"><i class="fas fa-print"></i></a>
+                                        <a title="Visualizar Venda" href="<?php echo base_url('vendas/edit/' . $vendas->venda_id); ?>" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i></a>
                                         <a title="Excluir" href="javascript(void)" data-toggle="modal" data-target="#venda-<?php echo $vendas->venda_id; ?>" class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></a>
                                     </td>
                                 </tr>
