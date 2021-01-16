@@ -111,5 +111,50 @@ class Ordem_servicos_model extends CI_Model {
         }
         
     }
+    
+    /* Udilizados no relatório de os */
+
+    public function gerar_relatorio_os($data_inicial = NULL, $data_final = NULL) {
+
+        $this->db->select([
+            'ordens_servicos.*',
+            'clientes.cliente_id',
+            'CONCAT(clientes.cliente_nome, " ", clientes.cliente_sobrenome) as cliente_nome_completo',
+            'formas_pagamentos.forma_pagamento_id',
+            'formas_pagamentos.forma_pagamento_nome as forma_pagamento',
+//            'vendedores.vendedor_id',
+//            'vendedores.vendedor_nome_completo',
+        ]);
+
+        $this->db->join('clientes', 'cliente_id = ordem_servico_cliente_id', 'LEFT');
+//        $this->db->join('vendedores', 'vendedor_id = ordem_servico_vendedor_id', 'LEFT');
+        $this->db->join('formas_pagamentos', 'forma_pagamento_id = ordem_servico_forma_pagamento_id', 'LEFT');
+
+        if ($data_inicial && $data_final) {
+
+            $this->db->where("SUBSTR(ordem_servico_data_emissao, 1, 10) >= '$data_inicial' AND SUBSTR(ordem_servico_data_emissao, 1, 10) <= '$data_final'");
+        } else {
+            $this->db->where("SUBSTR(ordem_servico_data_emissao, 1, 10) >= '$data_inicial'");
+        }
+
+        return $this->db->get('ordens_servicos')->result();
+    }
+
+    public function get_valor_final_relatorio_os($data_inicial = NULL, $data_final = NUL) {
+
+        $this->db->select([
+            'FORMAT(SUM(REPLACE(ordem_servico_valor_total,",", "")), 2) as ordem_servico_valor_total',
+        ]);
+
+        if ($data_inicial && $data_final) {
+
+            $this->db->where("SUBSTR(ordem_servico_data_emissao, 1, 10) >= '$data_inicial' AND SUBSTR(ordem_servico_data_emissao, 1, 10) <= '$data_final'");
+        } else {
+            $this->db->where("SUBSTR(ordem_servico_data_emissao, 1, 10) >= '$data_inicial'");
+        }
+        return $this->db->get('ordens_servicos')->row();
+    }
+
+    /* FIM Udilizados no relatório de os */
 
 }

@@ -92,6 +92,7 @@
         <div id="collapseCinco" class="collapse" aria-labelledby="headingCinco" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a title="Gerar Relatório de Vendas" class="collapse-item" href="<?php echo base_url('relatorios/vendas'); ?>"><i class="fas fa-shopping-cart text-900" style="color: mediumseagreen;"></i>&nbsp;&nbsp;Vendas</a>
+                <a title="Gerar Relatório de Ordens de Serviços" class="collapse-item" href="<?php echo base_url('relatorios/os'); ?>"><i class="fas fa-shopping-basket text-900" style="color: blue;"></i>&nbsp;&nbsp;Ordem de serviços</a>
             </div>
         </div>
     </li>
