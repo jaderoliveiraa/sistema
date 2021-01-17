@@ -51,7 +51,7 @@ class Receber extends CI_Controller {
                             'conta_receber_valor',
                             'conta_receber_status',
                             'conta_receber_obs',
-                        ), $this->input->post(),
+                       ), $this->input->post()
                 );
 
                 $conta_receber_status = $this->input->post('conta_receber_status');
@@ -105,7 +105,7 @@ class Receber extends CI_Controller {
                             'conta_receber_valor',
                             'conta_receber_status',
                             'conta_receber_obs',
-                        ), $this->input->post(),
+                        ), $this->input->post()
                 );
 
                 $conta_receber_status = $this->input->post('conta_receber_status');

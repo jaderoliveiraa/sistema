@@ -93,6 +93,8 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <a title="Gerar Relatório de Vendas" class="collapse-item" href="<?php echo base_url('relatorios/vendas'); ?>"><i class="fas fa-shopping-cart text-900" style="color: mediumseagreen;"></i>&nbsp;&nbsp;Vendas</a>
                 <a title="Gerar Relatório de Ordens de Serviços" class="collapse-item" href="<?php echo base_url('relatorios/os'); ?>"><i class="fas fa-shopping-basket text-900" style="color: blue;"></i>&nbsp;&nbsp;Ordem de serviços</a>
+                <a title="Gerar Relatório de Contas a Receber" class="collapse-item" href="<?php echo base_url('relatorios/receber'); ?>"><i class="fas fa-hand-holding-usd" style="color: DarkRed;"></i>&nbsp;&nbsp;Contas a Receber</a>
+                <a title="Gerar Relatório de Contas a Pagar" class="collapse-item" href="<?php echo base_url('relatorios/pagar'); ?>"><i class="fas fa-comment-dollar" style="color: ForestGreen;"></i>&nbsp;&nbsp;Contas a Pagar</a>
             </div>
         </div>
     </li>
