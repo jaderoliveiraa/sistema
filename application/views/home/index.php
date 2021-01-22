@@ -19,6 +19,46 @@
                     <li class="breadcrumb-item"><a href="<?php echo base_url('/'); ?>">Início</a></li>
                 </ol>
             </nav>
+            
+            <!-- para sucesso -->
+        <?php if ($message = $this->session->flashdata('sucesso')): ?>
+
+            <div class="row">
+
+                <div class="col-md-12">
+
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <strong><i class="far fa-smile-wink"></i>&nbsp; <?php echo $message ?></strong> 
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+
+        <?php endif; ?>
+            
+            <!-- Para erro -->
+        <?php if ($message = $this->session->flashdata('error')): ?>
+
+            <div class="row">
+
+                <div class="col-md-12">
+
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong><i class="fas fa-exclamation-triangle"></i>&nbsp; <?php echo $message ?></strong> 
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+
+        <?php endif; ?>
 
             <!-- Page Heading -->
             <!-- <h1 class="h3 mb-4 text-gray-800">Home</h1> -->

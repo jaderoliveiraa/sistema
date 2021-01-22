@@ -80,6 +80,7 @@
 
                                 <option value="2">Vendedor</option>
                                 <option value="1">Administrador</option>
+                                <option value="3">Técnico</option>
 
                             </select>
 

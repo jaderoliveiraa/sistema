@@ -11,6 +11,10 @@ class Receber extends CI_Controller {
             $this->session->set_flashdata('info', 'Sua sessão expirou!');
             redirect('login');
         }
+        if (!$this->ion_auth->is_admin()) {
+            $this->session->set_flashdata('error', 'Acesso negado! Contate o administrador...');
+            redirect('home');
+        }
 
         $this->load->model('financeiro_model');
     }

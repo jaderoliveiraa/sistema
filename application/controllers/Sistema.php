@@ -11,6 +11,7 @@ class Sistema extends CI_Controller {
             $this->session->set_flashdata('info', 'Sua sessão expirou!');
             redirect('login');
         }
+        
     }
 
     public function index() {

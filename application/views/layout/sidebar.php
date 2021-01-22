@@ -48,9 +48,11 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <a title="Gerenciar Clientes" class="collapse-item" href="<?php echo base_url('clientes'); ?>"><i class="fas fa-user-tie text-green-900" style="color: mediumseagreen;"></i>&nbsp;&nbsp;Clientes</a>
                 <a title="Gerenciar Fornecedores" class="collapse-item" href="<?php echo base_url('fornecedores'); ?>"><i class="fas fa-user-tag text-blue-900" style="color: blue;"></i></i>&nbsp;&nbsp;Fornecedores</a>
+                <?php if($this->ion_auth->is_admin()): ?>
                 <a title="Gerenciar Vendedores" class="collapse-item" href="<?php echo base_url('vendedores'); ?>"><i class="fas fa-user-secret text-900 " style="color: tomato;"></i>&nbsp;&nbsp;Vendedores</a>
                 <a title="Gerenciar Serviços" class="collapse-item" href="<?php echo base_url('servicos'); ?>"><i class="fas fa-wrench text-900" style="color: orange;"></i>&nbsp;&nbsp;Serviços</a>
                 <a title="Gerenciar Situações" class="collapse-item" href="<?php echo base_url('situacoes'); ?>"><i class="fas fa-exclamation text-900" style="color: blueviolet;"></i>&nbsp;&nbsp;Situações</a>
+                <?php endif; ?>
 
             </div>
         </div>
@@ -64,11 +66,13 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <a title="Gerenciar Marcas" class="collapse-item" href="<?php echo base_url('marcas'); ?>"><i class="fab fa-codepen" style="color: GreenYellow;"></i>&nbsp;&nbsp;Marcas</a>
                 <a title="Gerenciar Produtos" class="collapse-item" href="<?php echo base_url('produtos'); ?>"><i class="fas fa-tags" style="color: Chocolate;"></i></i>&nbsp;&nbsp;Produtos</a>
+                <?php if($this->ion_auth->is_admin()): ?>
                 <a title="Gerenciar Categorias" class="collapse-item" href="<?php echo base_url('categorias'); ?>"><i class="fas fa-vector-square" style="color: MediumBlue;"></i>&nbsp;&nbsp;Categorias</a>
+                <?php endif; ?>
             </div>
         </div>
     </li>
-
+<?php if($this->ion_auth->is_admin()): ?>
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseQuatro" aria-expanded="true" aria-controls="collapseTres">
             <i class="fas fa-donate"></i>
@@ -102,6 +106,8 @@
 
     <!-- Divider -->
     <hr class="sidebar-divider">
+    
+    
 
     <!-- Heading -->
     <div class="sidebar-heading">
@@ -122,6 +128,8 @@
             <i class="fas fa-cogs"></i>
             <span>Sistema</span></a>
     </li>
+    
+    <?php endif; ?>
     
     <li class="nav-item">
         <a title="Fazer Backup do sistema" class="nav-link" href="<?php echo base_url('backup/backup_syscontrol'); ?>">
