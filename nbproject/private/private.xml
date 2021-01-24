@@ -5,6 +5,8 @@
         <group>
             <file>file:/C:/xampp/htdocs/sistema/application/views/home/index.php</file>
             <file>file:/C:/xampp/htdocs/sistema/application/controllers/Home.php</file>
+            <file>file:/C:/xampp/htdocs/sistema/application/views/ordem_servicos/add.php</file>
+            <file>file:/C:/xampp/htdocs/sistema/application/controllers/Ordem_servicos.php</file>
             <file>file:/C:/xampp/htdocs/sistema/application/models/Home_model.php</file>
             <file>file:/C:/xampp/htdocs/sistema/application/views/layout/sidebar.php</file>
         </group>

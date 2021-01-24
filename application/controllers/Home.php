@@ -24,7 +24,16 @@ class Home extends CI_Controller {
             'soma_servicos' => $this->home_model->get_sum_ordem_servico(),
             'soma_pagar' => $this->home_model->get_sum_pagar(),
             'soma_receber' => $this->home_model->get_sum_receber(),
+            'produtos_mais_vendidos' => $this->home_model->get_produtos_mais_vendidos(),
+            'servicos_mais_vendidos' => $this->home_model->get_servicos_mais_vendidos(),
+            
+            
+            
         );
+        
+//        echo '<pre>';
+//        print_r($data['servicos_mais_vendidos']);
+//        exit();
         
         $this->load->view('layout/header', $data);
         $this->load->view('home/index');

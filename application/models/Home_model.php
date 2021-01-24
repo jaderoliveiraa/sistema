@@ -99,13 +99,13 @@ class Home_model extends CI_Model {
             'servicos.servico_nome',
         ]);
         
-        $this->db->join('servicos', 'servico_id = ordem_ts_servico_id_servico', 'LEFT');
+        $this->db->join('servicos', 'servico_id = ordem_ts_id_servico', 'LEFT');
         $this->db->limit(5);
         
-        $this->db->group_by('ordem_ts_servico_id_servico');
+        $this->db->group_by('ordem_ts_id_servico');
         $this->db->order_by('quantidade_vendidos', 'DESC');
         
-        return $this->db->get('ordem_tem_servico')->result();
+        return $this->db->get('ordem_tem_servicos')->result();
         
     }
     

@@ -45,7 +45,7 @@ class Ordem_servicos extends CI_Controller {
         //Validação de Formulário
         $this->form_validation->set_rules('ordem_servico_cliente_id', '', 'required');
         $this->form_validation->set_rules('ordem_servico_equipamento', 'Equipamento', 'trim|required|min_length[2]|max_length[80]');
-        $this->form_validation->set_rules('ordem_servico_marca_equipamento_id', 'Marca', 'trim|required|min_length[2]|max_length[80]');
+        $this->form_validation->set_rules('ordem_servico_marca_equipamento_id', 'Marca', 'trim|required|min_length[1]|max_length[3]');
         $this->form_validation->set_rules('ordem_servico_modelo_equipamento', 'Modelo', 'trim|required|min_length[2]|max_length[80]');
         $this->form_validation->set_rules('ordem_servico_acessorios', 'Acessórios', 'trim|required|min_length[2]|max_length[200]');
         $this->form_validation->set_rules('ordem_servico_defeito', 'Defeito', 'trim|required|max_length[700]');
