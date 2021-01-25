@@ -86,8 +86,9 @@ class Vendas extends CI_Controller {
             $produto_item_total = str_replace('R$', '', $produto_item_total);
 
             $qty_produto = count($produto_id);
-
-//                $venda_id = $this->input->post('venda_id');
+            
+//            $venda_id = $this->input->post('id_venda');
+            $venda_id = $id_venda;
 
             for ($i = 0; $i < $qty_produto; $i++) {
 
@@ -152,7 +153,11 @@ class Vendas extends CI_Controller {
 
 
 
-            //$venda = $data['venda'] = $this->vendas_model->get_by_id($venda_id);
+//            $venda = $data['venda'] = $this->vendas_model->get_by_id($venda_id);
+            
+//            echo '<pre>';
+//            print_r($venda_produtos);
+//            exit();
 
             $this->load->view('layout/header', $data);
             $this->load->view('vendas/add');

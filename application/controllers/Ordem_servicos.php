@@ -99,7 +99,8 @@ class Ordem_servicos extends CI_Controller {
 
             $qty_servico = count($servico_id);
 
-            $ordem_servico_id = $this->input->post('ordem_servico_id');
+            $ordem_servico_id = $id_ordem_servico;
+//            $ordem_servico_id = $this->input->post('ordem_servico_id');
 
             for ($i = 0; $i < $qty_servico; $i++) {
 

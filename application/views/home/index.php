@@ -9,8 +9,6 @@
 
     <?php $this->load->view('layout/navbar'); ?>
 
-
-
     <!-- Begin Page Content -->
     <div class="container-fluid">
         <nav aria-label="breadcrumb">
@@ -59,6 +57,8 @@
 
         <?php endif; ?>
 
+        <?php if ($this->ion_auth->is_admin()): ?>
+        
         <!-- Page Heading -->
 
         <div class="form-group row">
@@ -137,13 +137,15 @@
             </div>
 
             <!-- fim da primeira row -->
+            
+            <?php endif; ?>
 
             <!-- inicio da segunda row -->
 
             <div class="row col-12">
                 <div class="col-lg-6 mb-4 ">
 
-                    <!-- Illustrations -->
+                    <!-- Hanking de Vendas -->
                     <div class="card shadow mb-4 ">
                         <div class="card-header py-3">
                             <h6 class=" font-weight-bold text-success mb-0" align="center">TOP 3 Produtos mais vendidos</h6>
@@ -188,7 +190,7 @@
 
                 <div class="col-lg-6 mb-4">
 
-                    <!-- Illustrations -->
+                    <!-- hanking ordem de serviços -->
                     <div class="card shadow mb-0 ">
                         <div class="card-header py-3">
                             <h6 class=" font-weight-bold text-primary mb-0" align="center">TOP 3 Serviços mais realizados</h6>
@@ -234,7 +236,9 @@
             </div>
 
         </div>
-        <!-- fim da segunda row -->
+        <!-- fim da segunda row -->        
+        
+        
     </div>
 </div>
 </div>

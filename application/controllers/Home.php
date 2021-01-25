@@ -26,10 +26,66 @@ class Home extends CI_Controller {
             'soma_receber' => $this->home_model->get_sum_receber(),
             'produtos_mais_vendidos' => $this->home_model->get_produtos_mais_vendidos(),
             'servicos_mais_vendidos' => $this->home_model->get_servicos_mais_vendidos(),
-            
+            //Central de Notificações
             
             
         );
+        
+        $contador_notificacoes = 0;
+        
+        if($this->home_model->get_contas_receber_vencidas()){
+            
+            $data['contas_receber_vencidas'] = TRUE;
+            
+            $contador_notificacoes ++;
+            
+        }else{
+            $data['contas_receber_vencidas'] = FALSE;
+        }
+        
+        if($this->home_model->get_contas_pagar_vencidas()){
+            
+            $data['contas_pagar_vencidas'] = TRUE;
+            
+            $contador_notificacoes ++;
+            
+        }else{
+            $data['contas_pagar_vencidas'] = FALSE;
+        }
+        
+        if($this->home_model->get_contas_pagar_vencem_hoje()){
+            
+            $data['contas_pagar_vencem_hoje'] = TRUE;
+            
+            $contador_notificacoes ++;
+            
+        }else{
+            $data['contas_pagar_vencem_hoje'] = FALSE;
+        }
+        
+        if($this->home_model->get_contas_receber_vencem_hoje()){
+            
+            $data['contas_receber_vencem_hoje'] = TRUE;
+            
+            $contador_notificacoes ++;
+            
+        }else{
+            $data['contas_receber_vencem_hoje'] = FALSE;
+        }
+        
+        if($this->home_model->get_usuarios_desativados()){
+            
+            $data['usuarios_desativados'] = TRUE;
+            
+            $contador_notificacoes ++;
+            
+        }else{
+            $data['usuarios_desativados'] = FALSE;
+        }
+        
+        $data ['contador_notificacoes'] = $contador_notificacoes;
+        
+        
         
 //        echo '<pre>';
 //        print_r($data['servicos_mais_vendidos']);

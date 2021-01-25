@@ -54,7 +54,7 @@ class Home_model extends CI_Model {
         $this->db->where('conta_pagar_data_vencimento =', date('Y-m-d'));
 
         $this->db->join('fornecedores', 'fornecedor_id = conta_pagar_fornecedor_id', 'LEFT');
-        return $this->db->get('contas_pagar')->result();
+        return $this->db->get('contas_pagar')->row();
     }
     
     public function get_contas_receber_vencem_hoje() {
@@ -68,7 +68,8 @@ class Home_model extends CI_Model {
         $this->db->where('conta_receber_data_vencimento =', date('Y-m-d'));
 
         $this->db->join('clientes', 'cliente_id = conta_receber_cliente_id', 'LEFT');
-        return $this->db->get('contas_receber')->result();
+        return $this->db->get('contas_receber')->row();
+//        return $this->db->get('contas_receber')->result();
     }
     
     public function get_produtos_mais_vendidos() {
@@ -112,14 +113,14 @@ class Home_model extends CI_Model {
     public function get_usuarios_desativados() {
         
         $this->db->where('active',0);
-        $this->db->get('users')->row();       
+        return $this->db->get('users')->row();       
         
     }
     
     public function get_contas_receber_vencidas() {
         
-        $this->db->where('contas_receber_data_vencimento <', date('Y-m-d'));
-        $this->db->where('contas_receber_status', 0);
+        $this->db->where('conta_receber_data_vencimento <', date('Y-m-d'));
+        $this->db->where('conta_receber_status', 0);
         
         return $this->db->get('contas_receber')->row();
         

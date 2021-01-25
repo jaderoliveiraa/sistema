@@ -18,7 +18,7 @@
                 <li class="breadcrumb-item active" aria-current="page"><?php echo $titulo; ?></li>
             </ol>
         </nav>
-        
+
         <?php if ($message = $this->session->flashdata('sucesso')): ?>
 
             <div class="row">
@@ -39,41 +39,43 @@
         <?php endif; ?>
 
         <!-- DataTales Example -->
-        <div class="card shadow ">
+        <div class="container">
+            <div class="card shadow ">
 
-            <div class="card-body pt-0 mt-3">
+                <div class="card-body pt-0 mt-3">
 
-                <div class="row">
+                    <div class="row col-auto text-center">
 
-                    <div class="col">
-                        <a href="<?php echo base_url('ordem_servicos/pdf/'. $ordem_servico->ordem_servico_id) ?>" class="btn btn-dark btn-icon-split btn-lg">
-                            <span class="icon text-white-50">
-                                <i class="fas fa-print"></i>
-                            </span>
-                            <span class="text">Imprimir Ordem de Serviço</span>
-                        </a> 
-                    </div>
-                    
-                    <div class="col">
-                        <a href="<?php echo base_url('ordem_servicos/add') ?>" class="btn btn-success btn-icon-split btn-lg pr-4">
-                            <span class="icon text-white-50">
-                                <i class="fas fa-plus"></i>
-                            </span>
-                            <span class="text">Nova Ordem de Serviço</span>
-                        </a> 
-                    </div>
-                    
-                    <div class="col">
-                        <a href="<?php echo base_url('ordem_servicos') ?>" class="btn btn-info btn-icon-split btn-lg pr-4">
-                            <span class="icon text-white-50">
-                                <i class="fas fa-list-ol"></i>
-                            </span>
-                            <span class="text">Listar Ordens de Serviço</span>
-                        </a> 
+                        <div class="col-4">
+                            <a href="<?php echo base_url('ordem_servicos/pdf/' . $ordem_servico->ordem_servico_id) ?>" class="btn btn-dark btn-icon-split btn-lg">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-print"></i>
+                                </span>
+                                <span class="text">Imprimir O.S.</span>
+                            </a> 
+                        </div>
+
+                        <div class="col-4">
+                            <a href="<?php echo base_url('ordem_servicos/add') ?>" class="btn btn-success btn-icon-split btn-lg pr-4">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-plus"></i>
+                                </span>
+                                <span class="text">Nova O.S.</span>
+                            </a> 
+                        </div>
+
+                        <div class="col-4">
+                            <a href="<?php echo base_url('ordem_servicos') ?>" class="btn btn-info btn-icon-split btn-lg pr-4">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-list-ol"></i>
+                                </span>
+                                <span class="text">Listar O.S.</span>
+                            </a> 
+                        </div>
+
                     </div>
 
                 </div>
-
             </div>
         </div>
 

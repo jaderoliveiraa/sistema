@@ -47,7 +47,7 @@
                                         <th></th>
                                         <th class="" style="width: 55%">Produto</th>
                                         <th class="text-right pr-2" style="width: 12%">Valor unitário</th>
-                                        <th class="text-center" style="width: 8%">Qty</th>
+                                        <th class="text-center" style="width: 8%">Qtd</th>
                                         <th class="" style="width: 8%">% Desc</th>
                                         <th class="text-right pr-2" style="width: 15%">Total</th>
                                         <th class="" style="width: 25%"></th>
