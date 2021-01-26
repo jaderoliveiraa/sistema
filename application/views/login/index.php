@@ -1,6 +1,20 @@
+<style>
 
+        * { margin: 0; padding: 0; }
+
+        body { 
+            background: url(public/img/bg2.jpg) no-repeat center center fixed; 
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+        
+
+    </style>
 
 <div class="container">
+    
 
     <!-- Outer Row -->
     <div class="row justify-content-center">
@@ -23,9 +37,9 @@
                                         </div>
                                     </div>
                                 </div>
-                            
+
                             <?php endif; ?>
-                            
+
                             <?php if ($message = $this->session->flashdata('error')): ?>
 
                                 <div class="row">
@@ -42,7 +56,7 @@
                             <?php endif; ?>
                             <div class="p-5">
                                 <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4">Seja bem vindo!</h1>
+                                    <h1 class="h4 text-gray-900 mb-4">SysControl - Login</h1>
                                 </div>
                                 <form class="user" name="form_auth" method="POST" action="<?php echo base_url('login/auth'); ?>">
                                     <div class="form-group">
@@ -52,8 +66,8 @@
                                         <input type="password" name="password" class="form-control form-control-user" placeholder="Digite sua senha">
                                     </div>
 
-                                    <button type="submit" class="btn btn-primary btn-user btn-block">
-                                        Entrar
+                                    <button type="submit" class="btn btn-primary btn-user btn-block p-0">
+                                        <h3 class="mt-2">Entrar</h3>
                                     </button>
                                 </form>
                             </div>
@@ -65,6 +79,8 @@
         </div>
 
     </div>
+
+    
 
 </div>
 

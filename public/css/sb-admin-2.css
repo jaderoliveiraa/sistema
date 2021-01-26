@@ -67,6 +67,7 @@ body {
   color: #858796;
   text-align: left;
   background-color: #fff;
+  background-image: radial-gradient(red, green, blue);
 }
 
 [tabindex="-1"]:focus {
@@ -557,6 +558,15 @@ pre code {
   padding-left: 0.75rem;
   margin-right: auto;
   margin-left: auto;
+}
+
+.containerlogin {
+  width: 100%;
+  padding-right: 0.75rem;
+  padding-left: 0.75rem;
+  margin-right: auto;
+  margin-left: auto;
+  background-image: radial-gradient(red, green, blue);
 }
 
 @media (min-width: 576px) {
