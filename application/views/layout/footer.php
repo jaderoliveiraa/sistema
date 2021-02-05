@@ -1,10 +1,10 @@
-<?php if (!$this->router->fetch_class() == 'login'): ?>
+<?php if ($this->router->fetch_class() != 'login'): ?>
 
     <!-- Footer -->
     <footer class="sticky-footer bg-white">
         <div class="container my-auto">
             <div class="copyright text-center my-auto">
-                <span>Copyright &copy; Sistema <?php echo date('Y') ?>&nbsp; | Desenvolvido por Jáder Oliveira</span>
+                <span>Copyright &copy; SysControl <?php echo date('Y') ?>&nbsp; | Desenvolvido por Jáder Oliveira (88) 9 8842-0622</span>
             </div>
         </div>
     </footer>

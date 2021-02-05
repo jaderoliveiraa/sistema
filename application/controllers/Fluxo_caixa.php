@@ -44,7 +44,7 @@ class Fluxo_caixa extends CI_Controller {
                 'vendor/datatables/dataTables.bootstrap4.min.js',
                 'vendor/datatables/app.js'
             ),
-            'os' => $this->ordem_servicos_model->get_all(), // Pegar todos as ordens_servicos        
+            'os' => $this->ordem_servicos_model->get_all('ordens_servicos', array('ordem_servico_status' => 0)), // Pegar todos as ordens_servicos        
             'vendas' => $this->vendas_model->get_all(), // Pegar todos as ordens_servicos        
             'pagar' => $this->financeiro_model->get_all_pagar(), // Pegar todos as ordens_servicos        
             'receber' => $this->financeiro_model->get_all_receber(), // Pegar todos as ordens_servicos        

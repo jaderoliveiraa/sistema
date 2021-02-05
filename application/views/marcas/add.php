@@ -56,7 +56,7 @@
 
                     <div class="form-group row float-right mt-2 mb-0">
                         <div class="col-md-12 float-right">
-                            <a title="Voltar para a lista de Vendedores" href="<?php echo base_url('categorias'); ?>" class="btn btn-success btn-sm mr-2"><i class="fas fa-arrow-left"></i>&nbsp; Voltar</i></a>
+                            <a title="Voltar para a lista de Vendedores" href="<?php echo base_url('marcas'); ?>" class="btn btn-success btn-sm mr-2"><i class="fas fa-arrow-left"></i>&nbsp; Voltar</i></a>
                             <button type="submit" class="btn btn-primary btn-sm float-right">Salvar</button>
                         </div>
 
@@ -70,7 +70,5 @@
 </div>
 <!-- comment -->
 
-
-</div>
 <!-- End of Main Content -->
 

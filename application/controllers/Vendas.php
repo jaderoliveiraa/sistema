@@ -262,7 +262,7 @@ class Vendas extends CI_Controller {
                 //exit();
                 //erro de validação
                 $data = array(
-                    'titulo' => 'Atualizar Venda',
+                    'titulo' => 'Visualizar Venda',
                     'desabilitar' => TRUE, //Desabilita botão de submit
                     'styles' => array(
                         'vendor/select2/select2.min.css',

@@ -22,7 +22,7 @@
         <!-- DataTales Example -->
         <div class="card shadow ">
             <div class="card-header py-3 pb-0 mb-0 form-control form-control-user-date">
-                <p><strong><i class="fas fa-clock" style="color: blue;"></i>&nbsp;Última Edição:  </strong><?php echo formata_data_banco_com_hora($situacao->situacao_data_alteracao); ?></p>
+                <p><strong><i class="fas fa-clock" style="color: blue;"></i>&nbsp;Última Edição:  </strong><?php echo formata_data_banco_com_hora($situacoes->situacao_data_alteracao); ?></p>
             </div>
 
             <div class="card-body pt-0 mt-0">
@@ -35,7 +35,7 @@
 
                             <div class="col-md-6">
                                 <label for="formGroupExampleInput">Situação</label>
-                                <input type="text" class="form-control form-control-user-date  h-50" name="situacao_nome" placeholder="Digite a situação" value="<?php echo $situacao->situacao_nome ?>">
+                                <input type="text" class="form-control form-control-user-date  h-50" name="situacao_nome" placeholder="Digite a situação" value="<?php echo $situacoes->situacao_nome ?>">
                                 <?php echo form_error('situacao_nome', '<small class="form-text text-danger">', '</small>'); ?>
                             </div>
 
@@ -43,8 +43,8 @@
                                 <label for="formGroupExampleInput">Situação</label>
                                 <select class="form-control form-control-user-date h-50" name="situacao_ativa">
 
-                                    <option class="h-50" value="1" <?php echo($situacao->situacao_ativa == 1) ? 'selected' : '' ?>>Ativa</option>
-                                    <option class="h-50" value="0" <?php echo($situacao->situacao_ativa == 0) ? 'selected' : '' ?>>Inativa</option>
+                                    <option class="h-50" value="1" <?php echo($situacoes->situacao_ativa == 1) ? 'selected' : '' ?>>Ativa</option>
+                                    <option class="h-50" value="0" <?php echo($situacoes->situacao_ativa == 0) ? 'selected' : '' ?>>Inativa</option>
 
                                 </select>
                             </div>
@@ -58,7 +58,7 @@
 
                     <div class="form-group row">
 
-                        <input type="hidden" name="situacao_id" value="<?php echo $situacao->situacao_id ?>"  />
+                        <input type="hidden" name="situacao_id" value="<?php echo $situacoes->situacao_id ?>"  />
 
                     </div>
 
@@ -78,7 +78,5 @@
 </div>
 <!-- comment -->
 
-
-</div>
 <!-- End of Main Content -->
 

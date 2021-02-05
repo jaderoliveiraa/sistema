@@ -61,7 +61,7 @@ class Categorias extends CI_Controller {
         } else {
             //erro de validação
             $data = array(
-                'titulo' => 'Cadastrar Marca',
+                'titulo' => 'Cadastrar Categoria',
                 'scripts' => array(
                     '/vendor/mask/jquery.mask.min.js',
                     '/vendor/mask/app.js',

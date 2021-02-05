@@ -83,7 +83,7 @@
                 <a title="Gerenciar Contas a Pagar" class="collapse-item" href="<?php echo base_url('pagar'); ?>"><i class="fas fa-comment-dollar" style="color: ForestGreen;"></i>&nbsp;&nbsp;Contas a Pagar</a>
                 <a title="Gerenciar Contas a Receber" class="collapse-item" href="<?php echo base_url('receber'); ?>"><i class="fas fa-hand-holding-usd" style="color: DarkRed;"></i>&nbsp;&nbsp;Contas a Receber</a>
                 <a title="Gerenciar Formas de Pagamentos" class="collapse-item" href="<?php echo base_url('pagamentos'); ?>"><i class="far fa-credit-card" style="color: #009926"></i>&nbsp;&nbsp;Formas de Pagamento</a>
-                <a title="Gerenciar Fluxo de Caixa" class="collapse-item" href="<?php echo base_url('pagamentos'); ?>"><i class="far fa-credit-card" style="color: #009926"></i>&nbsp;&nbsp;Fluxo de Caixa</a>
+                <a title="Gerenciar Fluxo de Caixa" class="collapse-item" href="<?php echo base_url('fluxo_caixa'); ?>"><i class="fas fa-cash-register" style="color: blue"></i>&nbsp;&nbsp;Fluxo de Caixa</a>
             </div>
         </div>
     </li>

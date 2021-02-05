@@ -168,7 +168,5 @@
 </div>
 <!-- comment -->
 
-
-</div>
 <!-- End of Main Content -->
 

@@ -76,145 +76,194 @@
 
         <?php endif; ?>
 
+
+
         <!-- DataTales Example -->
 
         <div class="card shadow mb-4 col-12 pt-2">
             <div class="card-header pt-3 pb-1">
                 <label><h4>Fluxo de Caixa</h4></label>
             </div>
-            <div class="card-body pt-0">
-                <!-- (Contas recebidas) -->
-                <div class="table col-auto">
-                    <div class="card-header py-0">
-                        <label class="text-success"><h6>Contas Recebidas</h6></label>
+
+            <div class="row col-12">
+                <div class="col-lg-6 mb-4 ">
+
+                    <!-- Contas Pagas -->
+                    <div class="card shadow mb-4 ">
+                        <div class="card-header py-3">
+                            <h6 class=" font-weight-bold text-danger mb-0" align="center">Contas Pagas</h6>
+                        </div>
+                        <div class="card-body">
+
+                            <div class="table col-auto">
+                                <table class="table table-bordered" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center">Descricão</th>
+                                            <th class="text-center">Tipo</th>
+                                            <th class="text-center">Valor</th>
+                                            <th class="text-center">Data de Pagamento</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <?php foreach ($pagar as $pagar): ?>
+                                            <tr>
+                                                <td class="text-center"><?php echo $pagar->conta_pagar_descricao ?></td>
+                                                <td class="text-center"><?php echo 'R$&nbsp;' . $pagar->conta_pagar_valor ?></td>
+                                                <td class="text-center"><?php echo formata_data_banco_sem_hora($pagar->conta_pagar_data_pagamento) ?></td>
+                                                <td class="text-center"><?php echo $pagar->conta_pagar_status ?></td>
+                                            </tr>
+
+                                        <?php endforeach; ?>
+
+                                         
+
+                                    </tbody>
+                                </table>
+                                
+                            </div>
+
+                        </div>
                     </div>
-                    <table class="table table-bordered" width="100%" cellspacing="0">
-                        <thead>
-                            <tr>
-                                <th class="text-center">Descricão</th>
-                                <th class="text-center">Tipo</th>
-                                <th class="text-center">Valor</th>
-                                <th class="text-center">Data</th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            <?php foreach ($receber as $receber): ?>
-                                <tr>
-                                    <td class="text-center"><?php echo $receber->contas_receber_descricao ?></td>
-                                    <td class="text-center"><?php echo 'R$&nbsp;' . $receber->conta_receber_valor ?></td>
-                                    <td class="text-center"><?php echo formata_data_banco_sem_hora($receber->conta_receber_data_pagamento) ?></td>
-                                    <td class="text-center"><?php echo ($receber->conta_receber_status == 1 ? formata_data_banco_com_hora($receber->conta_receber_data_pagamento) : 'Aguardando pagamento') ?></td>
-                                </tr>
-
-                            <?php endforeach; ?>
-
-                        </tbody>
-                    </table>
                 </div>
 
-            </div>
-            <div class="card-body pt-0">
-                <div class="table col-auto">
-                    <div class="card-header py-0">
-                        <label class="text-danger"><h6>Contas Pagas</h6></label>
+                <div class="col-lg-6 mb-4">
+
+                    <!-- hanking ordem de serviços -->
+                    <div class="card shadow mb-0 ">
+                        <div class="card-header py-3">
+                            <h6 class=" font-weight-bold text-success mb-0" align="center">Contas Recebidas</h6>
+                        </div>
+                        <div class="card-body">
+
+
+                            <div class="table col-auto">
+                                <table class="table table-bordered" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center">Descricão</th>
+                                            <th class="text-center">Tipo</th>
+                                            <th class="text-center">Valor</th>
+                                            <th class="text-center">Data de Recebimento</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+<?php foreach ($receber as $receber): ?>
+                                            <tr>
+                                                <td class="text-center"><?php echo $receber->contas_receber_descricao ?></td>
+                                                <td class="text-center"><?php echo 'R$&nbsp;' . $receber->conta_receber_valor ?></td>
+                                                <td class="text-center"><?php echo formata_data_banco_sem_hora($receber->conta_receber_data_pagamento) ?></td>
+                                                <td class="text-center"><?php echo ($receber->conta_receber_status == 1 ? formata_data_banco_com_hora($receber->conta_receber_data_pagamento) : 'Aguardando pagamento') ?></td>
+                                            </tr>
+
+<?php endforeach; ?>
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
                     </div>
-                    <table class="table table-bordered" width="100%" cellspacing="0">
-                        <thead>
-                            <tr>
-                                <th class="text-center">Descricão</th>
-                                <th class="text-center">Tipo</th>
-                                <th class="text-center">Valor</th>
-                                <th class="text-center">Data</th>
-                            </tr>
-                        </thead>
 
-                        <tbody>
-                            <?php foreach ($pagar as $pagar): ?>
-                                <tr>
-                                    <td class="text-center"><?php echo $pagar->conta_pagar_descricao ?></td>
-                                    <td class="text-center"><?php echo 'R$&nbsp;' . $pagar->conta_pagar_valor ?></td>
-                                    <td class="text-center"><?php echo formata_data_banco_sem_hora($pagar->conta_pagar_data_pagamento) ?></td>
-                                    <td class="text-center"><?php echo $pagar->conta_pagar_status ?></td>
-                                </tr>
-
-                            <?php endforeach; ?>
-
-                        </tbody>
-                    </table>
                 </div>
             </div>
-            
-            <div class="card-body pt-0">
-                <!-- (Vendas) -->
-                <div class="table col-auto">
-                    <div class="card-header py-0">
-                        <label class="text-success"><h6>Vendas</h6></label>
+
+            <!--( Segunda Linha )-->
+
+            <div class="row col-12">
+                <div class="col-lg-6 mb-4 ">
+
+                    <!-- ( Vendas ) -->
+                    <div class="card shadow mb-4 ">
+                        <div class="card-header py-3">
+                            <h6 class=" font-weight-bold text-danger mb-0" align="center">Vendas</h6>
+                        </div>
+                        <div class="card-body">
+
+                            <div class="table col-auto">
+                                <table class="table table-bordered" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center">Cliente</th>
+                                            <th class="text-center">Vendedor</th>
+                                            <th class="text-center">Valor</th>
+                                            <th class="text-center">Data da Venda</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+<?php foreach ($vendas as $vendas): ?>
+                                            <tr>
+                                                <td class="text-center"><?php echo $vendas->cliente_nome_completo ?></td>
+                                                <td class="text-center"><?php echo $vendas->vendedor_nome_completo ?></td>
+                                                <td class="text-right"><?php echo 'R$&nbsp;' . $vendas->venda_valor_total ?></td>
+                                                <td class="text-center"><?php echo formata_data_banco_com_hora($vendas->venda_data_emissao) ?></td>
+                                            </tr>
+
+<?php endforeach; ?>
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
                     </div>
-                    <table class="table table-bordered" width="100%" cellspacing="0">
-                        <thead>
-                            <tr>
-                                <th class="text-center">Cliente</th>
-                                <th class="text-center">Vendedor</th>
-                                <th class="text-center">Valor</th>
-                                <th class="text-center">Data</th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            <?php foreach ($vendas as $vendas): ?>
-                                <tr>
-                                    <td class="text-center"><?php echo $vendas->cliente_nome_completo?></td>
-                                    <td class="text-center"><?php echo $vendas->vendedor_nome_completo?></td>
-                                    <td class="text-right"><?php echo 'R$&nbsp;' . $vendas->venda_valor_total ?></td>
-                                    <td class="text-center"><?php echo formata_data_banco_com_hora($vendas->venda_data_emissao) ?></td>
-                                </tr>
-
-                            <?php endforeach; ?>
-
-                        </tbody>
-                    </table>
                 </div>
 
-            </div>
-            
-            <div class="card-body pt-0">
-                <!-- (Ordem de Serviços) -->
-                <div class="table col-auto">
-                    <div class="card-header py-0">
-                        <label class="text-success"><h6>Ordens de Serviços</h6></label>
+                <div class="col-lg-6 mb-4">
+
+                    <!-- (Ordem de Serviços) -->
+                    <div class="card shadow mb-0 ">
+                        <div class="card-header py-3">
+                            <h6 class=" font-weight-bold text-success mb-0" align="center">Contas Recebidas</h6>
+                        </div>
+                        <div class="card-body">
+
+
+                            <div class="table col-auto">
+                                <table class="table table-bordered" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center">Cliente</th>
+                                            <th class="text-center">Equipamento</th>
+                                            <th class="text-center">Valor</th>
+                                            <th class="text-center">Data Finalização</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+<?php foreach ($os as $os): ?>
+                                            <tr>
+                                                <td class="text-center"><?php echo $os->cliente_nome ?></td>
+                                                <td class="text-center"><?php echo $os->ordem_servico_equipamento ?></td>
+                                                <td><?php echo 'R$&nbsp;' . $os->ordem_servico_valor_total ?></td>
+                                                <td class="text-center"><?php echo formata_data_banco_com_hora($vendas->venda_data_emissao) ?></td>
+                                            </tr>
+
+<?php endforeach; ?>
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
                     </div>
-                    <table class="table table-bordered" width="100%" cellspacing="0">
-                        <thead>
-                            <tr>
-                                <th class="text-center">Cliente</th>
-                                <th class="text-center">Equipamento</th>
-                                <th class="text-center">Valor</th>
-                                <th class="text-center">Data</th>
-                            </tr>
-                        </thead>
 
-                        <tbody>
-                            <?php foreach ($os as $os): ?>
-                                <tr>
-                                    <td class="text-center"><?php echo $os->cliente_nome ?></td>
-                                    <td class="text-center"><?php echo $os->ordem_servico_equipamento ?></td>
-                                    <td><?php echo 'R$&nbsp;' . $os->ordem_servico_valor_total ?></td>
-                                    <td class="text-center"><?php echo formata_data_banco_com_hora($vendas->venda_data_emissao) ?></td>
-                                </tr>
-
-                            <?php endforeach; ?>
-
-                        </tbody>
-                    </table>
                 </div>
+            </div>
+
+            <!--( Fim da Segunda Linha )-->
+
+        </div>
+
+        <div
 
             </div>
-        </div>        
+            <!-- /.container-fluid -->
 
-    </div>
-    <!-- /.container-fluid -->
-
-</div>
-<!-- End of Main Content -->
+        </div>
+        <!-- End of Main Content -->
 
