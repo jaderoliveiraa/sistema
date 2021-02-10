@@ -1,5 +1,11 @@
 
-<?php $this->load->view('layout/sidebar'); ?>
+<?php
+$this->load->view('layout/sidebar');
+$soma_pagar = 0;
+$soma_receber = 0;
+$soma_vendas = 0;
+$soma_os = 0;
+?>
 
 
 
@@ -100,7 +106,6 @@
                                     <thead>
                                         <tr>
                                             <th class="text-center">Descricão</th>
-                                            <th class="text-center">Tipo</th>
                                             <th class="text-center">Valor</th>
                                             <th class="text-center">Data de Pagamento</th>
                                         </tr>
@@ -112,16 +117,23 @@
                                                 <td class="text-center"><?php echo $pagar->conta_pagar_descricao ?></td>
                                                 <td class="text-center"><?php echo 'R$&nbsp;' . $pagar->conta_pagar_valor ?></td>
                                                 <td class="text-center"><?php echo formata_data_banco_sem_hora($pagar->conta_pagar_data_pagamento) ?></td>
-                                                <td class="text-center"><?php echo $pagar->conta_pagar_status ?></td>
+
                                             </tr>
+
+                                            <?php
+                                            $soma_pagar += floatval($pagar->conta_pagar_valor);
+                                            ?>
 
                                         <?php endforeach; ?>
 
-                                         
-
                                     </tbody>
+
                                 </table>
-                                
+                                <div class="text-right">
+                                    <span>Total de contas Pagas Hoje: <b><?php echo 'R$ ' . number_format($soma_pagar, 2); ?></b></span>
+                                </div>
+
+
                             </div>
 
                         </div>
@@ -130,7 +142,7 @@
 
                 <div class="col-lg-6 mb-4">
 
-                    <!-- hanking ordem de serviços -->
+                    <!-- (Contas recebidas) -->
                     <div class="card shadow mb-0 ">
                         <div class="card-header py-3">
                             <h6 class=" font-weight-bold text-success mb-0" align="center">Contas Recebidas</h6>
@@ -143,25 +155,27 @@
                                     <thead>
                                         <tr>
                                             <th class="text-center">Descricão</th>
-                                            <th class="text-center">Tipo</th>
                                             <th class="text-center">Valor</th>
                                             <th class="text-center">Data de Recebimento</th>
                                         </tr>
                                     </thead>
 
                                     <tbody>
-<?php foreach ($receber as $receber): ?>
+                                        <?php foreach ($receber as $receber): ?>
                                             <tr>
-                                                <td class="text-center"><?php echo $receber->contas_receber_descricao ?></td>
+                                                <td class="text-center"><?php echo $receber->conta_receber_cliente_id ?></td>
                                                 <td class="text-center"><?php echo 'R$&nbsp;' . $receber->conta_receber_valor ?></td>
-                                                <td class="text-center"><?php echo formata_data_banco_sem_hora($receber->conta_receber_data_pagamento) ?></td>
                                                 <td class="text-center"><?php echo ($receber->conta_receber_status == 1 ? formata_data_banco_com_hora($receber->conta_receber_data_pagamento) : 'Aguardando pagamento') ?></td>
                                             </tr>
+                                            <?php
+                                            $soma_receber += floatval($receber->conta_receber_valor);
+                                            ?>
 
-<?php endforeach; ?>
+                                        <?php endforeach; ?>
 
                                     </tbody>
                                 </table>
+                                <span>Total de contas Recebidas Hoje: <?php echo number_format(($soma_receber), 2, '.', ''); ?></span>
                             </div>
 
                         </div>
@@ -194,7 +208,7 @@
                                     </thead>
 
                                     <tbody>
-<?php foreach ($vendas as $vendas): ?>
+                                        <?php foreach ($vendas as $vendas): ?>
                                             <tr>
                                                 <td class="text-center"><?php echo $vendas->cliente_nome_completo ?></td>
                                                 <td class="text-center"><?php echo $vendas->vendedor_nome_completo ?></td>
@@ -202,10 +216,18 @@
                                                 <td class="text-center"><?php echo formata_data_banco_com_hora($vendas->venda_data_emissao) ?></td>
                                             </tr>
 
-<?php endforeach; ?>
+                                            <?php
+                                            $soma_vendas += floatval($vendas->venda_valor_total);
+                                            ?>
+
+                                        <?php endforeach; ?>
 
                                     </tbody>
+
                                 </table>
+                                <div class="text-right">
+                                    <span>Total de Vendas de Hoje: <b><?php echo 'R$ ' . number_format($soma_vendas, 2); ?></b></span>
+                                </div>
                             </div>
 
                         </div>
@@ -217,7 +239,7 @@
                     <!-- (Ordem de Serviços) -->
                     <div class="card shadow mb-0 ">
                         <div class="card-header py-3">
-                            <h6 class=" font-weight-bold text-success mb-0" align="center">Contas Recebidas</h6>
+                            <h6 class=" font-weight-bold text-success mb-0" align="center">Ordens de Serviços</h6>
                         </div>
                         <div class="card-body">
 
@@ -234,19 +256,26 @@
                                     </thead>
 
                                     <tbody>
-<?php foreach ($os as $os): ?>
+                                        <?php foreach ($os as $os): ?>
                                             <tr>
                                                 <td class="text-center"><?php echo $os->cliente_nome ?></td>
                                                 <td class="text-center"><?php echo $os->ordem_servico_equipamento ?></td>
                                                 <td><?php echo 'R$&nbsp;' . $os->ordem_servico_valor_total ?></td>
                                                 <td class="text-center"><?php echo formata_data_banco_com_hora($vendas->venda_data_emissao) ?></td>
                                             </tr>
+                                            
+                                            <?php
+                                            $soma_os += floatval($os->ordem_servico_valor_total);
+                                            ?>
 
-<?php endforeach; ?>
+                                        <?php endforeach; ?>
 
 
                                     </tbody>
                                 </table>
+                                <div class="text-right">
+                                    <span>Total de Ordens de Serviços de Hoje: <b><?php echo 'R$ ' . number_format($soma_os, 2); ?></b></span>
+                                </div>
                             </div>
 
                         </div>
@@ -254,16 +283,16 @@
 
                 </div>
             </div>
-
+            <div class="text-right p-3">
+                <span class="text-gray-900"><h3>Total = <?php echo 'R$ ' . number_format($soma_os + $soma_receber + $soma_vendas - $soma_pagar, 2) ?></h3></span>
+            </div>
             <!--( Fim da Segunda Linha )-->
 
         </div>
 
-        <div
 
-            </div>
-            <!-- /.container-fluid -->
+        <!-- /.container-fluid -->
 
-        </div>
-        <!-- End of Main Content -->
+    </div>
+    <!-- End of Main Content -->
 
