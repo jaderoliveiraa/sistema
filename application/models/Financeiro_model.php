@@ -27,6 +27,19 @@ class Financeiro_model extends CI_Model {
         $this->db->join('clientes', 'cliente_id = conta_receber_cliente_id', 'LEFT');
         return $this->db->get('contas_receber')->result();
     }
+    
+    public function get_recebidas() {
+
+        $this->db->select([
+            'contas_receber.*',
+            'cliente_id',
+            'cliente_nome',
+        ]);
+
+        $this->db->join('clientes', 'cliente_id = conta_receber_cliente_id', 'LEFT');
+        $this->db->where('conta_receber_status', 1, 'conta_receber_data_pagamento', date('Y-m-d'));
+        return $this->db->get('contas_receber')->result();
+    }
 
     //Inicio Utilização de Relatórios
 
