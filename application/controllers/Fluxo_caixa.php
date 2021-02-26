@@ -32,7 +32,11 @@ class Fluxo_caixa extends CI_Controller {
 
     public function index() {
 
-        $dataatual = date('Y-m-d');
+        $dataatual = $this->input->post('data');
+        
+//        echo'<pre>';
+//        print_r($this->input->post());
+//        exit();
 
         $data = array(
             'titulo' => 'Fluxo de Caixa',
@@ -44,15 +48,16 @@ class Fluxo_caixa extends CI_Controller {
                 'vendor/datatables/dataTables.bootstrap4.min.js',
                 'vendor/datatables/app.js'
             ),
-            'os' => $this->ordem_servicos_model->get_all('ordens_servicos', array('ordem_servico_status' => 1)), // Pegar todos as ordens_servicos        
-            'vendas' => $this->vendas_model->get_all(), // Pegar todos as ordens_servicos        
-            'pagar' => $this->financeiro_model->get_all_pagar(), // Pegar todos as ordens_servicos        
-            'receber' => $this->financeiro_model->get_recebidas(), // Pegar todos as contas recebidas
+            'os' => $this->ordem_servicos_model->get_os_by_data('ordens_servicos', array('ordem_servico_status' => 1)), // Pegar todos as ordens_servicos        
+            'vendas' => $this->vendas_model->get_vendas_by_data(), // Pegar todos as ordens_servicos        
+            'pagar' => $this->financeiro_model->get_contas_pagar_by_data(), // Pegar todos as ordens_servicos        
+            'receber' => $this->financeiro_model->get_contas_receber_by_data(), // Pegar todos as contas recebidas
         );
 
 //        echo '<pre>';
-//        print_r($data['vendas']);
+//        print_r($data['receber']);
 //        exit();
+
         $this->load->view('layout/header', $data);
         $this->load->view('fluxo/index');
         $this->load->view('layout/footer');

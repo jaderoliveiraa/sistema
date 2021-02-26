@@ -22,6 +22,27 @@ class Ordem_servicos_model extends CI_Model {
 
         return $this->db->get('ordens_servicos')->result();
     }
+    
+    public function get_os_by_data() {
+
+        $this->db->select([
+            'ordens_servicos.*',
+            'clientes.cliente_id',
+            'clientes.cliente_nome',
+            'marcas.marca_id',
+            'marcas.marca_nome as marca',
+            'formas_pagamentos.forma_pagamento_id',
+            'formas_pagamentos.forma_pagamento_nome as forma_pagamento',
+        ]);
+
+        $this->db->join('clientes', 'cliente_id = ordem_servico_cliente_id', 'LEFT');
+        $this->db->join('formas_pagamentos', 'forma_pagamento_id = ordem_servico_forma_pagamento_id', 'LEFT');
+        $this->db->join('marcas', 'marca_id = ordem_servico_marca_equipamento_id', 'LEFT');
+        $this->db->where('ordem_servico_data_conclusao >=', date('Y-m-d'));
+        //$this->db->where('ordem_servico_status' == 1);
+
+        return $this->db->get('ordens_servicos')->result();
+    }
 
     public function get_all_servicos_by_ordem($ordem_servico_id = NULL) {
 

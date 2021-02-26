@@ -22,6 +22,26 @@ class Vendas_model extends CI_Model {
 
         return $this->db->get('vendas')->result();
     }
+    
+    public function get_vendas_by_data() {
+
+        $this->db->select([
+            'vendas.*',
+            'clientes.cliente_id',
+            'CONCAT(clientes.cliente_nome, " ", clientes.cliente_sobrenome) as cliente_nome_completo',
+            'formas_pagamentos.forma_pagamento_id',
+            'formas_pagamentos.forma_pagamento_nome as forma_pagamento',
+            'vendedores.vendedor_id',
+            'vendedores.vendedor_nome_completo',
+        ]);
+
+        $this->db->join('clientes', 'cliente_id = venda_cliente_id', 'LEFT');
+        $this->db->join('vendedores', 'vendedor_id = venda_vendedor_id', 'LEFT');
+        $this->db->join('formas_pagamentos', 'forma_pagamento_id = venda_forma_pagamento_id', 'LEFT');
+        $this->db->where('venda_data_emissao >=', date('Y-m-d'));
+
+        return $this->db->get('vendas')->result();
+    }
 
     public function get_by_id($venda_id = NULL) {
 

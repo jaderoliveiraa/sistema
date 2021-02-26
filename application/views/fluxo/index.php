@@ -218,7 +218,7 @@ $soma_os = 0;
                                                 <td class="text-center"><?php echo $vendas->cliente_nome_completo ?></td>
                                                 <td class="text-center"><?php echo $vendas->vendedor_nome_completo ?></td>
                                                 <td class="text-right"><?php echo 'R$&nbsp;' . $vendas->venda_valor_total ?></td>
-                                                <td class="text-center"><?php echo formata_data_banco_com_hora($vendas->venda_data_emissao) ?></td>
+                                                <td class="text-center"><?php echo formata_data_banco_sem_hora($vendas->venda_data_emissao) ?></td>
                                             </tr>
 
                                             <?php
@@ -266,7 +266,7 @@ $soma_os = 0;
                                                 <td class="text-center"><?php echo $os->cliente_nome ?></td>
                                                 <td class="text-center"><?php echo $os->ordem_servico_equipamento ?></td>
                                                 <td><?php echo 'R$&nbsp;' . str_replace('.', ',', $os->ordem_servico_valor_total) ?></td>
-                                                <td class="text-center"><?php echo formata_data_banco_com_hora($vendas->venda_data_emissao) ?></td>
+                                                <td class="text-center"><?php echo formata_data_banco_com_hora($os->ordem_servico_data_conclusao) ?></td>
                                             </tr>
 
                                             <?php

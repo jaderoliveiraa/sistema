@@ -27,19 +27,6 @@ class Financeiro_model extends CI_Model {
         $this->db->join('clientes', 'cliente_id = conta_receber_cliente_id', 'LEFT');
         return $this->db->get('contas_receber')->result();
     }
-    
-    public function get_recebidas() {
-
-        $this->db->select([
-            'contas_receber.*',
-            'cliente_id',
-            'cliente_nome',
-        ]);
-
-        $this->db->join('clientes', 'cliente_id = conta_receber_cliente_id', 'LEFT');
-        $this->db->where('conta_receber_status', 1, 'conta_receber_data_pagamento', date('Y-m-d'));
-        return $this->db->get('contas_receber')->result();
-    }
 
     //Inicio Utilização de Relatórios
 
@@ -61,6 +48,40 @@ class Financeiro_model extends CI_Model {
         }
         return $this->db->get('contas_receber')->result();
     }
+    
+    //inicio da parte do fluxo de caixa
+    public function get_contas_receber_by_data() {
+
+        $this->db->select([
+            'contas_receber.*',
+            'cliente_id',
+            'CONCAT(clientes.cliente_nome, " ", clientes.cliente_sobrenome) as cliente_nome_completo',
+        ]);
+
+        $this->db->join('clientes', 'cliente_id = conta_receber_cliente_id', 'LEFT');
+        $this->db->where('conta_receber_status', 1);
+        $this->db->where('conta_receber_data_pagamento >=', date('Y-m-d'));
+        //$this->db->where ('(conta_receber_data_pagamento = now())');
+       //$this->db->where('conta_receber_data_pagamento', date('Y-m-d'));
+
+        return $this->db->get('contas_receber')->result();
+    }
+    
+    public function get_contas_pagar_by_data() {
+
+        $this->db->select([
+            'contas_pagar.*',
+            'fornecedor_id',
+            'fornecedores.fornecedor_nome_fantasia',
+        ]);
+
+        $this->db->join('fornecedores', 'fornecedor_id = conta_pagar_fornecedor_id', 'LEFT');
+        $this->db->where('conta_pagar_status', 1);
+        $this->db->where('conta_pagar_data_pagamento >=', date('Y-m-d'));
+
+        return $this->db->get('contas_pagar')->result();
+    }
+    //fim da parte do fluxo de caixa
 
     public function get_sum_contas_receber_relatorio($conta_receber_status = NULL, $data_vencimento = NULL) {
 
@@ -77,7 +98,7 @@ class Financeiro_model extends CI_Model {
         }
         return $this->db->get('contas_receber')->row();
     }
-    
+
     public function get_contas_pagar_relatorio($conta_pagar_status = NULL, $data_vencimento = NULL) {
 
         $this->db->select([

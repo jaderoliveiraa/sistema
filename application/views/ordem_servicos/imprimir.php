@@ -85,6 +85,3 @@
 <!-- comment -->
 
 
-</div>
-<!-- End of Main Content -->
-
