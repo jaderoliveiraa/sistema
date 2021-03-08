@@ -101,7 +101,7 @@ class Home_model extends CI_Model {
         ]);
         
         $this->db->join('servicos', 'servico_id = ordem_ts_id_servico', 'LEFT');
-        $this->db->limit(5);
+        $this->db->limit(3);
         
         $this->db->group_by('ordem_ts_id_servico');
         $this->db->order_by('quantidade_vendidos', 'DESC');

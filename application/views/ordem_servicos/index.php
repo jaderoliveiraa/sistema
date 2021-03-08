@@ -89,12 +89,13 @@
                                     <td class="text-center"><?php echo $os->ordem_servico_equipamento ?></td>
                                     <td><?php echo 'R$&nbsp;' . $os->ordem_servico_valor_total ?></td>
                                     <td class="text-center">
-                                        <?php echo ($os->ordem_servico_status == 1 ? $os->forma_pagamento : 'Em aberto'); ?>
+                                       <?php echo ($os->ordem_servico_status == 1 ? $os->forma_pagamento : 'Em aberto'); ?>
                                     </td>
                                     <td class="text-center">
-                                        <?php echo ($os->ordem_servico_status == 1 ? '<span class="badge badge-info btn-sm">Paga</span>' : '<span class="badge badge-warning btn-sm">Em Aberto</span>'); ?>
+                                        
+                                        <?php echo ($os->ordem_servico_status == 1 ? '<span class="badge badge-info btn-sm">Finalizada</span>' : '<span class="badge badge-warning btn-sm">Em Aberto</span>'); ?>
+                                        
                                     </td>
-                                    
                                     
                                     <td class="text-center">
                                         <a title="Imprimir OS" href="<?php echo base_url('ordem_servicos/pdf/' . $os->ordem_servico_id); ?>" class="btn btn-sm btn-dark"><i class="fas fa-print"></i></a>

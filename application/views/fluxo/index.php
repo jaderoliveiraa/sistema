@@ -5,6 +5,7 @@ $soma_pagar = 0;
 $soma_receber = 0;
 $soma_vendas = 0;
 $soma_os = 0;
+$soma_total_os = 0;
 ?>
 
 
@@ -255,6 +256,7 @@ $soma_os = 0;
                                         <tr>
                                             <th class="text-center">Cliente</th>
                                             <th class="text-center">Equipamento</th>
+                                            <th class="text-center">Tipo pagamento</th>
                                             <th class="text-center">Valor</th>
                                             <th class="text-center">Data Finalização</th>
                                         </tr>
@@ -265,13 +267,19 @@ $soma_os = 0;
                                             <tr>
                                                 <td class="text-center"><?php echo $os->cliente_nome ?></td>
                                                 <td class="text-center"><?php echo $os->ordem_servico_equipamento ?></td>
+                                                <td class="text-center"><?php echo $os->forma_pagamento ?></td>
                                                 <td><?php echo 'R$&nbsp;' . str_replace('.', ',', $os->ordem_servico_valor_total) ?></td>
                                                 <td class="text-center"><?php echo formata_data_banco_com_hora($os->ordem_servico_data_conclusao) ?></td>
                                             </tr>
-
+                                            <?php $soma_total_os += floatval($os->ordem_servico_valor_total);?>
                                             <?php
-                                            $soma_os += floatval($os->ordem_servico_valor_total);
+                                            if($os->ordem_servico_forma_pagamento_id == 2){
+                                                $soma_os += floatval($os->ordem_servico_valor_total);
+                                            }else{
+                                                $soma_os == 0;
+                                            }
                                             ?>
+                                            
 
                                         <?php endforeach; ?>
 
@@ -279,7 +287,8 @@ $soma_os = 0;
                                     </tbody>
                                 </table>
                                 <div class="text-right">
-                                    <span>Total de Ordens de Serviços de Hoje: <b class="text-success"><?php echo 'R$ ' . number_format($soma_os, 2); ?></b></span>
+                                    <span>Ordens de Serviços em dinheiro de Hoje: <b class="text-success"><?php echo 'R$ ' . number_format($soma_os, 2); ?></b></span></br>
+                                    <span>Total de Ordens de Serviços de Hoje: <b class="text-success"><?php echo 'R$ ' . number_format($soma_total_os, 2); ?></b></span>
                                 </div>
                             </div>
 

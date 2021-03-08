@@ -27,7 +27,8 @@ class Ordem_servicos extends CI_Controller {
                 'vendor/datatables/dataTables.bootstrap4.min.js',
                 'vendor/datatables/app.js'
             ),
-            'ordens_servicos' => $this->ordem_servicos_model->get_all(), // Pegar todos as ordens_servicos        
+            'ordens_servicos' => $this->ordem_servicos_model->get_all(), // Pegar todos as ordens_servicos       
+            'formas_pagamentos' => $this->ordem_servicos_model->get_all(), // Pegar todos as formas de pagamentos       
         );
 
         //echo'<pre>';
@@ -70,6 +71,7 @@ class Ordem_servicos extends CI_Controller {
                         'ordem_servico_obs',
                         'ordem_servico_valor_desconto',
                         'ordem_servico_valor_total',
+                        'ordem_servico_status',
                     ), $this->input->post()
             );
 
@@ -194,6 +196,7 @@ class Ordem_servicos extends CI_Controller {
                             'ordem_servico_obs',
                             'ordem_servico_valor_desconto',
                             'ordem_servico_valor_total',
+                            'ordem_servico_data_conclusao',
                         ), $this->input->post()
                 );
 

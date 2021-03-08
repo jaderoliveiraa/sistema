@@ -1,0 +1,198 @@
+//=============================================================================
+//
+// Copyright (C) 1999-2020, Western Digital Technologies, Inc.
+//
+// RESTRICTED RIGHTS LEGEND
+// ------------------------
+//
+//                         All rights reserved.
+//
+//    This code is CONFIDENTIAL and a TRADE SECRET of Western Digital
+//    Technologies, Inc and its affiliates ("WD").  This code is protected
+//    under copyright laws as an unpublished work of WD.  Notice is
+//    for informational purposes only and does not imply publication.
+//
+//    The receipt or possession of this code does not convey any rights to
+//    reproduce or disclose its contents, or to manufacture, use, or sell
+//    anything that it may describe, in whole or in part, without the
+//    specific written consent of WD.  Any reproduction or distribution
+//    of this code without the express written consent of WD is strictly
+//    prohibited, is a violation of the copyright laws, and may subject
+//    you to criminal prosecution.
+//
+//    Use, duplication, or disclosure by any commercial industry (public
+//    or private), private individual, or by any Government Agency without
+//    an expressed written consent of release from WD is subject to
+//    restriction set forth in paragraph (b)(3)(B) of the Rights in
+//    Technical Data and Computer Software clause in DAR 7-104.9(a).
+//
+//    Manufacturer is:
+//
+//       Western Digital Technologies, Inc
+//       3355 Michelson Drive
+//       Suite 100
+//       Irvine, CA 92612-0651
+//       949-672-7000
+//
+//=============================================================================
+
+Western Digital Data LifeGuard Diagnostics - WinDlg (DLGDIAG for Windows)
+v1.37
+
+PROGRAM DESCRIPTION:
+WinDlg (DLGDIAG for Windows) is a GUI application that allows you to quickly and 
+efficiently verify the status of Western Digital drives.  It reports each drive's 
+SMART Status and SMART Attribute values, allows you to run diagnostic tests (Quick 
+Test and Extended Test), or erase operating systems and file systems on drives 
+(Write Zeros).  If any drive errors are found, WinDlg provides an option to return 
+the drive to a defect-free state through its Extended Test repair option.
+
+WinDlg runs on Windows 7 and above (including Win8.x and Win10).  
+Supported drive interfaces are: SATA, USB, FireWire, and SAS.
+
+
+QUICK TEST:
+The Quick Test can determine (in a short amount of time and with a high level of 
+confidence) whether a drive is defect-free.  For maximum confidence, the Extended 
+Test is recommended.  The Quick Test option may not be available on earlier ATA 
+drives, SCSI drives, and external drives.
+
+The Quick Test checks a drive's SMART Status and performs a SMART Quick Drive 
+Self-Test if the drive supports the SMART feature.  If the drive does not support 
+the SMART feature, a partial disk scan is performed instead of a SMART Quick Drive 
+Self-Test.  In this case, the scan reads 10% from the drive's OD (Outer Diameter) 
+zone and 10% from the ID (Inner Diameter) zone.  I/O operations are confined to 
+the first and last 2 million sectors in the ID and OD to limit the amount of time 
+that this operation requires on large capacity drives.
+
+
+EXTENDED TEST:
+Typically, the Extended Test runs anywhere from 30 minutes to many hours to test 
+one drive.  Larger drives take longer to test; system performance also affects 
+the test time.  If a bad sector is detected, this test may stop responding for a 
+few minutes before it continues.  By default, the Extended Test is non-destructive.
+This test is destructive only when you select the repair option after bad sectors 
+are detected.
+
+The Extended Test scans the entire disk media from LBA #0 to the maximum LBA.  If 
+a bad sector is detected, you are prompted to repair it.  If you choose to repair 
+the sector, WinDlg writes zeroes to the bad sector; this causes the drive firmware 
+to relocate the bad sector and return the sector to a defect-free state.
+
+
+ERASE:
+Erasing data renders the data inaccessible.  This option can be used to erase 
+operating systems and file systems.  QUICK ERASE erases the first and last 10% 
+of a drive's sectors or the first and last 1 million sectors (whichever is smaller).  
+FULL ERASE erases the entire drive and may take hours to complete (depending 
+on drive capacity and system performance).
+ 
+
+VIEW TEST RESULT:
+This function displays recent test results.
+ 
+
+TO RUN THE PROGRAM:
+ 
+BACK UP DATA:
+Before you run WinDlg, it is highly recommended that you back up all data for all 
+drives.  WinDlg may write to the drive during the Extended Test (refer to the 
+Extended Test for details).  As with all utilities that write to a drive, it is 
+recommended that you back up your data before proceeding.
+
+
+TO TEST EACH DRIVE:
+Double click on one of the physical drives in the list to display the test menu.  
+You can also right-click on a physical drive and select Run Diagnostics to display 
+the test menu.  Select a test and click the Start button to start the test.  When 
+the test completes, a status is displayed.  For the Extended Test, if bad sectors 
+are detected, a repair option allows you to fix any correctable errors.  However, 
+when you choose this repair option, data stored in the bad sectors will be lost; 
+thus, this function must be used with extreme caution.
+
+WD provides a DOS version of DLGDIAG (called DOSDLG) which can be downloaded from 
+WD's web site and used to repair certain errors that cannot be corrected in the 
+Windows environment.
+
+
+SMART STATUS:
+Each drive's SMART Status is queried and displayed when you run WinDlg.  The SMART 
+Status can be PASS, FAIL, or Not Available.  Right-click on a physical drive and 
+select Show SMART Drive Info or double click a physical drive's SMART Status column 
+to view that drive's SMART Attribute values.  Some drives (e.g., SAS - Serial 
+Attached SCSI) do not return SMART data, so "Not Available" will be displayed in 
+the SMART Status column (this is expected and is not an error).
+
+
+INSTALLATION:
+
+You can run WinDlg directly without installing it.  However, you can run WinDlg's 
+Setup program (setup.exe) if you want to create a Programs menu item, a desktop 
+icon, and a Quick Launch icon for WinDlg.  Running WinDlg's Setup program requires 
+elevation (i.e., administrative privilege).  Starting with Windows Vista, Microsoft 
+changed Windows such that all processes run with the least user privileges possible, 
+so you may need to follow the steps shown below.
+
+Here is one way to run WinDlg’s Setup program with administrative privilege:
+-Open Windows Explorer. 
+-Navigate to the directory where WinDlg's Setup program (setup.exe) is located. 
+-Right click setup.exe and select "Run as administrator".
+-Follow the Setup program prompts.
+
+
+REMOVAL:
+
+If you attempt to uninstall WinDlg while WinDlg is running, WinDlg.exe (the WinDlg 
+executable file) will not be deleted from its installation directory.  In this 
+case, delete WinDlg.exe from its installation directory before you install a new 
+version of WinDlg.
+
+
+KNOWN LIMITATIONS:
+
+On Windows Vista and later releases of Windows (like Win7, Win8 and Win8.1), the 
+ERASE test may fail on drives that have partitions.  In this case, you will 
+see an ERASE error message box with an error message that looks like this: 
+  Sector #2048-2304::Erase error! Continue?
+Run the ERASE test again and it should succeed.
+
+On Windows Vista and later releases of Windows (like Win7, Win8 and Win8.1), 
+repairing bad sectors may fail on drives that have partitions.  In this case, you 
+will see an error message box with an error message that looks like this: 
+  Unable to repair bad sectors.
+This error occurs because Windows Vista (and later releases) prevents software 
+tools from writing data to a drive that has a partition when the write operation 
+is not performed through the file system.  This protects the integrity of file 
+system data.  You may need to run WinDlg on an earlier version of Windows (like 
+Windows XP) or you may need to run DOS utility DOSDLG (v5.22 or later) to repair 
+bad sectors.
+
+
+ERROR CODES:
+
+WinDlg can return the following error codes:
+ 1 = SMART Return Status failure
+ 2 = SMART attribute over threshold
+ 3 = SMART attribute read failure
+ 4 = Open drive failure
+ 5 = Diagnostic Self-Test (DST) not supported
+ 6 = SMART Diagnostic Self-Test (DST) failure
+ 7 = SMART offline command failure
+ 8 = Read sector failure
+ 9 = Write sector failure
+10 = Set file pointer error
+11 = Cable test failed
+12 = Too many bad sectors detected
+13 = Failed to repair sector
+14 = Test suspended
+15 = Read diagnostics sector error
+16 = Random read error
+17 = Erase SSD failure
+18 = Read Verify Sector Ext error
+19 = SMART Enable operation failure
+20 = Failed to delete partitions
+21 = ATA Data Set Management to trim device has failed
+22 = Drive does not support Sanitize Device
+23 = Sanitize Device Status command failure
+24 = Sanitize Device Overwrite command failure
+25 = Sanitize Device command is already in progress
